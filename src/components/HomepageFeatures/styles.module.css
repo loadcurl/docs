@@ -4,3 +4,25 @@
   padding: 2rem 0;
   width: 100%;
 }
+
+.featureIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: var(--ifm-color-primary-lightest);
+  color: var(--ifm-color-primary-darkest);
+}
+
+[data-theme='dark'] .featureIcon {
+  background: rgba(37, 194, 160, 0.15);
+  color: var(--ifm-color-primary-light);
+}
+
+.featureIconSvg {
+  width: 1.75rem;
+  height: 1.75rem;
+}

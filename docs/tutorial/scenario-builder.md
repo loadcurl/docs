@@ -22,6 +22,10 @@ Real user traffic is rarely a single endpoint in isolation. A user logs in, fetc
 
 ## Building your first scenario
 
+:::note
+The Scenario Builder is available on the **Pro plan**. Access it from the Dashboard under **New Test → Scenario**.
+:::
+
 1. Click **New Test → Scenario**.
 2. You start with one empty step. Each step represents one HTTP request.
 

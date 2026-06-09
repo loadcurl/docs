@@ -18,7 +18,7 @@ Load Curl is a cloud-based API load testing platform. You provide an endpoint UR
 
 ### Do I need to install anything to get started?
 
-No. The web interface at [app.loadcurl.com](https://app.loadcurl.com) is all you need for basic tests. The `lf` CLI is optional and only needed for CI/CD integration.
+No. Open [app.loadcurl.com](https://app.loadcurl.com) and you're ready to go. You can paste an existing curl command or Postman snippet to auto-fill the form, or configure your request manually. The `lf` CLI is only needed for CI/CD pipeline integration.
 
 ### Is there a free plan?
 

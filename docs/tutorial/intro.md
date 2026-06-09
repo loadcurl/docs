@@ -30,7 +30,7 @@ Load Curl is purpose-built to make these questions easy to answer for **any engi
 By the end of this tutorial you will:
 
 1. Create a free Load Curl account
-2. Run your first load test against a live API endpoint
+2. Import a curl command or configure a request manually, then run your first load test
 3. Read and understand the graded **Report Card**
 4. Set up a threshold alert for SLA monitoring
 5. Integrate Load Curl into a **GitHub Actions** CI/CD pipeline

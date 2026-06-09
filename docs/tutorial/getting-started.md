@@ -18,23 +18,47 @@ This page walks you through account setup and running your very first load test.
 2. Sign up with your email address.
 3. Verify your email and log in.
 
-You will land on the **Dashboard**, which shows your test history, usage quota, and quick-start options.
+You will land on the **Dashboard**. From here you can configure an HTTP request manually or import from curl/Postman, set your load profile, and run a test — live metrics stream in real time as workers hit your endpoint.
 
 ---
 
-## Step 2 — Paste your endpoint
+## Step 2 — Set up your request
 
-Click **New Test** in the top navigation.
+You have two ways to configure your HTTP request:
 
-In the **Endpoint** field, enter the full URL of the API you want to test:
+### Option A — Import from curl or Postman (fastest)
 
+If you already have a curl command or a Postman snippet, paste it directly into the **Import from curl or Postman** panel and click **Parse & fill form**. Load Curl will automatically extract the method, URL, headers, and body for you.
+
+**Supported formats:**
+
+```bash
+# curl command
+curl -X POST http://localhost:4000/api/users \
+  -H "Content-Type: application/json" \
+  -d '{"name": "test"}'
 ```
-https://api.yourapp.com/v2/users
+
+```bash
+# Postman request snippet
+request POST 'http://localhost:4000/api/users' \
+  --header 'Content-Type: application/json' \
+  --body '{"name": "test"}'
 ```
 
-### Add authentication headers (optional)
+Line breaks using `\` are supported in both formats.
 
-If your endpoint requires authentication, expand the **Headers** section and add them:
+### Option B — Fill manually
+
+Give your test a **Scenario name** (optional, e.g. `Fetch user profile`), then:
+
+1. Select your **HTTP method** from the dropdown — GET, POST, PUT, DELETE, etc.
+2. Enter your full **endpoint URL** (e.g. `https://api.yourapp.com/v2/users`).
+3. Use the tabs below the URL to add **Query Params**, **Headers**, or a **Body**.
+
+#### Add authentication headers (optional)
+
+If your endpoint requires authentication, open the **Headers** tab and add:
 
 | Header | Example value |
 |---|---|
@@ -42,9 +66,9 @@ If your endpoint requires authentication, expand the **Headers** section and add
 | `x-api-key` | `sk-prod-abc123` |
 | `Content-Type` | `application/json` |
 
-### Add a request body (optional)
+#### Add a request body (optional)
 
-For `POST` or `PUT` endpoints, select the HTTP method from the dropdown and paste your JSON body:
+For `POST` or `PUT` endpoints, select the method from the dropdown, open the **Body** tab, and paste your JSON:
 
 ```json
 {
@@ -54,44 +78,48 @@ For `POST` or `PUT` endpoints, select the HTTP method from the dropdown and past
 }
 ```
 
-:::info Import from Postman or OpenAPI
-You can skip manual entry entirely. Click **Import** and upload a Postman collection (`.json`) or an OpenAPI spec (`.yaml` / `.json`) — Load Curl will pre-fill the endpoint, headers, and body for you.
-:::
-
 ---
 
 ## Step 3 — Configure your load profile
 
-The **Load Profile** panel controls how workers behave during the test.
+Scroll to the **Load Configuration** panel and set how aggressively workers hit your endpoint:
 
-| Setting | What it does | Starter default |
+| Field | What it does | Default |
 |---|---|---|
-| **Concurrent users** | Total number of workers running at peak | 50 |
-| **Duration** | How long the test runs at full load | 60 s |
-| **Ramp-up time** | Seconds to gradually reach full concurrency | 10 s |
-| **Target region** | Geographic source of worker traffic | Auto |
-
-### Choosing the right concurrency
-
-A common starting point is **10 × your expected peak traffic**. For example, if you expect 100 simultaneous users on launch day, start with a 1,000-worker test to build in a safety margin.
+| **Concurrent Users** | Number of virtual users hitting your endpoint simultaneously | 10 |
+| **Duration (s)** | How long the test runs in total | 10 |
+| **Ramp-up (s)** | Time to gradually reach full concurrency (0 = instant spike) | 0 |
+| **Max RPS** | Cap on requests per second (0 = unlimited) | 1 |
 
 :::tip
-Always use a ramp-up period. Sending full concurrency instantly can cause artificial timeouts that hide real bottlenecks.
+A short ramp-up period helps avoid artificial timeouts from an instant traffic spike. Start with the defaults above, then increase concurrency once you have a baseline.
 :::
 
 ---
 
-## Step 4 — Run the test
+## Step 4 — Watch live metrics
 
-Click **Start Test**. You will be taken to the **Live Dashboard** where you can watch metrics stream in real time:
+Click **Start Test**. The **Status** indicator changes from **Idle** to **Running**, and the **Live Metrics** panel streams results in real time:
 
+- **Total Requests** — cumulative requests fired so far
+- **Success** — requests that returned a 2xx response
+- **Failed** — requests that errored or timed out
+- **Avg Latency** — mean response time across all requests
 - **RPS** — current requests per second
-- **P50 / P95 / P99 latency** — response time percentiles updating every second
-- **Error rate** — percentage of non-2xx responses
-- **Throughput** — data transferred per second
-- **Server CPU** — resource usage (when your server agent is installed)
 
 The test runs for the full duration you configured, then finalises the **Report Card**.
+
+### Test controls
+
+The **Status** indicator shows the current test state: **Idle** (not yet started), **Running** (test in progress), or **Completed**. Use **Stop Test** to halt early, or **Clear & Reset** to wipe the form and start fresh.
+
+---
+
+## Step 5 — Inspect logs
+
+The **Logs / Response** panel at the bottom of the page streams live request and response details as the test runs. Use this to spot errors, unexpected status codes, or slow individual responses.
+
+No activity appears in this panel until a test is started.
 
 ---
 

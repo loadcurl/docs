@@ -11,7 +11,8 @@
 /** Site metadata (used in docusaurus.config.js) */
 export const SITE = {
   name: 'loadcurl',
-  tagline: 'loadcurl documentation',
+  tagline:
+    'Load test your APIs in seconds — no infrastructure, no setup, just results.',
   url: 'https://docs.loadcurl.com',
   organizationName: 'loadcurl',
   projectName: 'loadcurl',
@@ -23,10 +24,8 @@ export const LINKS = {
   website: 'https://loadcurl.com',
   /** App dashboard */
   dashboard: 'https://app.loadcurl.com',
-  /** GitHub repository */
-  github: 'https://github.com/loadcurl/loadcurl',
-  /** GitHub organization profile */
-  githubOrg: 'https://github.com/loadcurl',
+  /** GitHub organization */
+  github: 'https://github.com/loadcurl',
   /** Community */
   discord: 'https://discord.gg/loadcurl',
   /** Social */
@@ -123,11 +122,11 @@ export const FOOTER_LINKS = [
         href: LINKS.github,
         icon: LINK_ICONS.github,
       },
-      {
-        label: LINK_LABELS.discord,
-        href: LINKS.discord,
-        icon: LINK_ICONS.discord,
-      },
+      // {
+      //   label: LINK_LABELS.discord,
+      //   href: LINKS.discord,
+      //   icon: LINK_ICONS.discord,
+      // },
     ],
   },
 ];
