@@ -13,6 +13,7 @@ export const SITE = {
   name: 'loadcurl',
   tagline:
     'Load test your APIs in seconds — no infrastructure, no setup, just results.',
+  footerTagline: 'Run load tests with confidence — no infra, no setup.',
   url: 'https://docs.loadcurl.com',
   organizationName: 'loadcurl',
   projectName: 'loadcurl',

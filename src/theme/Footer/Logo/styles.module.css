@@ -1,0 +1,9 @@
+.footerLogoLink {
+  display: inline-flex;
+  opacity: 1;
+  transition: opacity 0.15s ease;
+}
+
+.footerLogoLink:hover {
+  opacity: 0.85;
+}

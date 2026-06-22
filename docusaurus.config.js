@@ -5,7 +5,7 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
-import {FOOTER_LINKS, NAVBAR_ITEMS, SITE} from './src/constants/links.js';
+import {FOOTER_LINKS, LINKS, NAVBAR_ITEMS, SITE} from './src/constants/links.js';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -76,7 +76,13 @@ const config = {
       footer: {
         style: 'dark',
         links: FOOTER_LINKS,
-        copyright: `Copyright © ${new Date().getFullYear()} ${SITE.name}.`,
+        logo: {
+          alt: `${SITE.name} logo`,
+          src: 'public/lightLogo.png',
+          href: LINKS.website,
+          width: 100,
+        },
+        copyright: `Copyright © ${new Date().getFullYear()} ${SITE.name}. Built for developers who ship fast.`,
       },
       prism: {
         theme: prismThemes.github,

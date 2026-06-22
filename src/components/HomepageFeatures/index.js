@@ -35,8 +35,8 @@ const FeatureIcons = {
       />
       <path
         strokeWidth="2"
-        strokeLinecap="round"
         strokeLinejoin="round"
+        strokeLinecap="round"
         d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
       />
     </svg>
@@ -47,22 +47,23 @@ const FeatureList = [
   {
     title: 'Simple by Design',
     icon: 'zap',
+    featured: true,
     description: (
       <>
         Stop wrestling with complex tooling. loadcurl gets you from endpoint
         URL to a full load test in under 60 seconds — paste your URL, set your
-        concurrency, and go. Built for developers who want answers fast.
+        concurrency, and go.
       </>
     ),
   },
   {
-    title: 'Focus on Performance, Not Setup',
+    title: 'Focus on Performance',
     icon: 'chart',
     description: (
       <>
         Everything you need to configure, run, and analyze HTTP workloads is
-        documented here. From your first test to CI/CD pipelines and team
-        workflows — the docs cover it all, step by step.
+        documented here — from your first test to CI/CD pipelines and team
+        workflows.
       </>
     ),
   },
@@ -71,22 +72,26 @@ const FeatureList = [
     icon: 'integrate',
     description: (
       <>
-        loadcurl fits right into your existing stack. Explore clear API
-        references, real-world examples, and integration guides for GitHub
-        Actions, GitLab CI, and more — all in one searchable, fast-loading
-        site.
+        Clear API references, real-world examples, and integration guides for
+        GitHub Actions, GitLab CI, and more — all in one searchable site.
       </>
     ),
   },
 ];
 
-function Feature({title, icon, description}) {
+function Feature({title, icon, description, featured}) {
   const Icon = FeatureIcons[icon];
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center padding-horiz--md">
+    <div className={clsx('col col--4', 'margin-bottom--lg')}>
+      <div
+        className={clsx(styles.featureCard, featured && styles.featureCardFeatured)}>
         {Icon ? (
-          <div className={styles.featureIcon} aria-hidden="true">
+          <div
+            className={clsx(
+              styles.featureIcon,
+              featured && styles.featureIconFeatured,
+            )}
+            aria-hidden="true">
             <Icon className={styles.featureIconSvg} />
           </div>
         ) : null}
@@ -101,6 +106,10 @@ export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
       <div className="container">
+        <p className={styles.sectionLabel}>Why loadcurl</p>
+        <Heading as="h2" className={styles.sectionTitle}>
+          Everything you need to load test with confidence
+        </Heading>
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />

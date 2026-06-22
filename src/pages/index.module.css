@@ -1,23 +1,241 @@
 /**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
+ * Homepage — Medcare-style dashboard landing.
  */
 
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+.hero {
+  background: var(--loadcurl-background);
+  padding: 2.5rem 0 0;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
+@media screen and (min-width: 997px) {
+  .hero {
+    padding-top: 3rem;
   }
 }
 
-.buttons {
+.heroCard {
+  background: var(--loadcurl-card);
+  border: 1px solid var(--loadcurl-border);
+  border-radius: var(--loadcurl-radius-xl);
+  box-shadow: var(--loadcurl-shadow-lg);
+  display: grid;
+  gap: 2rem;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+@media screen and (min-width: 997px) {
+  .heroCard {
+    grid-template-columns: 1fr 280px;
+    padding: 2.5rem 2.75rem;
+  }
+}
+
+.heroContent {
   display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.heroBadge {
+  align-self: flex-start;
+  background: var(--loadcurl-accent);
+  border-radius: 999px;
+  color: var(--loadcurl-accent-foreground);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 0.75rem;
+  text-transform: uppercase;
+}
+
+[data-theme='dark'] .heroBadge {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+}
+
+.heroTitle {
+  color: var(--loadcurl-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+@media screen and (min-width: 1280px) {
+  .heroTitle {
+    font-size: 2.75rem;
+  }
+}
+
+.heroSubtitle {
+  color: var(--loadcurl-muted-foreground);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 34rem;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.ctaPrimary,
+.ctaSecondary {
   align-items: center;
+  display: inline-flex !important;
   justify-content: center;
+  line-height: 1.25;
+  min-height: 2.75rem;
+  padding: 0 1.5rem !important;
+}
+
+.ctaPrimary {
+  background: var(--loadcurl-primary) !important;
+  border-color: var(--loadcurl-primary) !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.25);
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.ctaPrimary:hover {
+  background: var(--loadcurl-primary-hover) !important;
+  border-color: var(--loadcurl-primary-hover) !important;
+  color: #ffffff !important;
+}
+
+.ctaSecondary {
+  border-radius: 0.75rem !important;
+  font-weight: 600;
+}
+
+.heroAccent {
+  align-items: center;
+  background: var(--loadcurl-gradient-kpi);
+  border-radius: var(--loadcurl-radius-lg);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 200px;
+  padding: 1.5rem;
+  position: relative;
+  text-align: center;
+}
+
+.heroAccent::before {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  content: '';
+  height: 8rem;
+  position: absolute;
+  right: -2rem;
+  top: -2rem;
+  width: 8rem;
+}
+
+.heroAccentIcon {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  display: flex;
+  height: 3.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+  width: 3.5rem;
+}
+
+.heroAccentIcon svg {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
+.heroAccentLabel {
+  font-size: 0.875rem;
+  margin: 0;
+  opacity: 0.85;
+}
+
+.heroAccentValue {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0.15rem 0 0;
+}
+
+/* KPI stat row */
+.statsGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  margin-top: 1.25rem;
+  padding-bottom: 1rem;
+}
+
+@media screen and (min-width: 640px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 997px) {
+  .statsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.statCard {
+  background: var(--loadcurl-card);
+  border: 1px solid var(--loadcurl-border);
+  border-radius: var(--loadcurl-radius-lg);
+  box-shadow: var(--loadcurl-shadow);
+  padding: 1.25rem 1.5rem;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.statCard:hover {
+  border-color: rgba(34, 197, 94, 0.3);
+  box-shadow: var(--loadcurl-shadow-lg);
+}
+
+.statCard:first-child {
+  background: var(--loadcurl-gradient-kpi);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.statCard:first-child .statLabel,
+.statCard:first-child .statTrend {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.statValue {
+  color: var(--loadcurl-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 0 0 0.35rem;
+}
+
+.statCard:first-child .statValue {
+  color: #ffffff;
+}
+
+.statLabel {
+  color: var(--loadcurl-heading);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.statTrend {
+  color: var(--loadcurl-muted-foreground);
+  font-size: 0.75rem;
+  margin: 0.35rem 0 0;
 }
