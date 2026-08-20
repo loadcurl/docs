@@ -2,8 +2,8 @@
 id: faq
 title: Frequently Asked Questions
 sidebar_label: FAQ
-sidebar_position: 8
-description: Answers to common questions about Load Curl's plans, limits, protocols, and security.
+sidebar_position: 6
+description: Answers about Load Curl accounts, tests, workspaces, reports, and security.
 ---
 
 # Frequently Asked Questions
@@ -14,103 +14,99 @@ description: Answers to common questions about Load Curl's plans, limits, protoc
 
 ### What is Load Curl?
 
-Load Curl is a cloud-based API load testing platform. You provide an endpoint URL, configure a load profile, and Load Curl's distributed workers simulate thousands of concurrent users hitting your API. You get real-time metrics and a graded Report Card when the test finishes.
+Load Curl is a cloud HTTP load testing product. You configure a request in the [dashboard](https://app.loadcurl.com), set target RPS, ramp-up, and duration, and Load Curl runs the traffic. You get live metrics and a detailed report (latency, throughput, HTTP outcomes) plus PDF export.
 
-### Do I need to install anything to get started?
+### Do I need to install anything?
 
-No. Open [app.loadcurl.com](https://app.loadcurl.com) and you're ready to go. You can paste an existing curl command or Postman snippet to auto-fill the form, or configure your request manually. The `lf` CLI is only needed for CI/CD pipeline integration.
+No. Use the web dashboard. There is no CLI or CI/CD integration in the current product.
 
-### Is there a free plan?
+### Is there a free way to start?
 
-Yes. The **Starter plan** is free forever. It includes 50 concurrent workers and 5 test runs per month — enough for regular regression checks on small teams.
-
----
-
-## Limits and plans
-
-### What happens if I exceed my monthly test limit?
-
-On the Starter plan, you will be prompted to upgrade or wait until your quota resets at the start of the next calendar month. Unused runs do not roll over.
-
-### Can I upgrade mid-month?
-
-Yes. When you upgrade to Pro, you immediately get access to 5,000 concurrent workers and unlimited test runs for the remainder of the billing period. You are charged a prorated amount for the days remaining in the month.
-
-### How many seats are included in the Pro plan?
-
-The Pro plan includes up to 10 seats. Additional seats can be added for a per-seat fee, or you can upgrade to the Enterprise plan for unlimited seats.
+Yes. Register without a credit card. A personal workspace is created automatically. See **Wallet** in the app for plan comparison (Free, Starter, Growth, Scale).
 
 ---
 
-## Tests and accuracy
+## Tests
 
-### How many regions do Load Curl workers run in?
+### How do I run a test?
 
-The current beta footprint distributes workers across 12 regions. Additional global regions are on the roadmap. You can see the active regions listed in the **Configure Load Profile** step before starting a test.
+Dashboard → **Create test** → method and URL (or paste curl / Postman) → set target traffic, ramp-up, and duration → **Start test**. Details: [Getting Started](./getting-started).
 
-### Can I target a specific region?
+### What HTTP methods are supported?
 
-Yes. In the load profile, expand the **Target Regions** dropdown and select one or more regions. Workers are distributed evenly across the regions you select.
+GET, POST, PUT, PATCH, DELETE in the dashboard (the API also accepts HEAD and OPTIONS). Body must be a JSON object when used.
 
-### Does Load Curl test both REST and GraphQL?
+### Can I chain multiple endpoints in one scenario?
 
-Yes. Both REST and GraphQL endpoints are supported today. You can set the Content-Type header to `application/graphql` and paste your query into the request body. gRPC and WebSocket support are planned for a future release.
+Not in the current product. Each test is a single HTTP request repeated under the load profile.
 
-### Will the test affect real users in production?
+### What are the live limits?
 
-Load Curl tests are real HTTP traffic. If you are testing a production environment, ensure your infrastructure can handle the concurrency you configure, or use a staging environment for exploratory testing.
+Duration **30–120 seconds**, target traffic up to **10,000 RPS**, and a **per-workspace test count** (shown as remaining tests on the Dashboard). Some internal accounts may be unrestricted.
 
----
+### Will this hit production?
 
-## Results and data
+Yes if you enter a production URL. Traffic is real. Use staging when you are exploring. Only test systems you are allowed to test.
 
-### How long are test results stored?
+### Can I stop a test?
 
-| Plan | Result history |
-|---|---|
-| Starter | 30 days |
-| Pro | 12 months |
-| Enterprise | Custom (configurable) |
+Yes. Stop from the Dashboard or the run page while it is running.
 
-### Can I export my results?
+### How do I get a report?
 
-On the Pro plan and above, you can export any Report Card as a PDF. The audit log can be exported as a CSV on all plans.
-
-### Can I share results with someone who doesn't have a Load Curl account?
-
-Yes. Every Report Card can be made public via a shareable link. The recipient does not need an account to view it.
+Open the run from history. When processing finishes, view metrics on the page and download a PDF. Reports are not public links.
 
 ---
 
-## Security
+## Workspaces
 
-### How does Load Curl handle my API credentials?
+### Do I need to create an organization?
 
-Authentication headers and request bodies you configure in a test are stored encrypted at rest and transmitted over TLS. They are never logged or exposed in the public Report Card link.
+No. Sign-up creates a personal workspace. Upgrade from **Settings** when you want a company.
 
-### Can I see who has access to my account?
+### How do I upgrade individual to company?
 
-Yes. Under **Settings → Security**, you can view all active login sessions — including device type, location, IP address, and last activity — and revoke any session individually or all at once.
+Settings → **Upgrade to company** → enter a name → confirm. One-way. See [Workspaces and company upgrade](./organisation-management).
 
-### Does Load Curl support SSO?
+### What roles exist?
 
-SSO/SAML 2.0 is available on the **Enterprise plan**.
+**Owner**, **Admin**, and **Member**. There is no Viewer or Tester role.
+
+### Can I be in two companies at once?
+
+No. One active organization per user. Joining a company parks your personal workspace.
 
 ---
 
-## Billing and invoicing
+## Account and security
 
-### Is there a contract or minimum commitment?
+### How do I manage devices?
 
-No. Pro is month-to-month and can be cancelled at any time. You retain access until the end of the paid period.
+Settings → **Sessions**. Sign out one device or log out all others.
 
-### What payment methods are accepted?
+### How are credentials stored for tests?
 
-All major credit and debit cards are accepted. Enterprise customers can also pay by invoice.
+Request headers and bodies you enter are stored to run the test and show the report. Treat tokens like secrets; prefer staging credentials. Data is sent over TLS to the API.
 
-### Where can I download my invoices?
+### What cookies does the app use?
 
-Go to **Settings → Billing → Invoice History**. All invoices are available as PDFs and include a per-member usage breakdown.
+An HttpOnly **refresh_token** cookie keeps you signed in. The access token stays in memory. A device id is stored in local storage. See the [Cookie Policy](https://loadcurl.com/cookies).
+
+### Does Load Curl support Google sign-in?
+
+Yes, on the login and register screens.
+
+---
+
+## Billing
+
+### Where are plans and credits?
+
+**Wallet** in the dashboard. Company members share credits. Members can view balance; Owner and Admin see plans.
+
+### Is checkout live?
+
+Wallet pricing in the API is marked illustrative until payment checkout is connected. Use the in-app Wallet as the source of truth for what you can purchase.
 
 ---
 
@@ -118,8 +114,4 @@ Go to **Settings → Billing → Invoice History**. All invoices are available a
 
 ### How do I get help?
 
-- **Free / Starter:** Community support via the in-app chat.
-- **Pro:** Priority email support. Expect a response within 1 business day.
-- **Enterprise:** Dedicated Slack channel with a named support contact.
-
-For urgent issues or to report a bug, email [hello@loadcurl.io](mailto:hello@loadcurl.io).
+Email [hello@loadcurl.io](mailto:hello@loadcurl.io). Product docs: [docs.loadcurl.com](https://docs.loadcurl.com). Guide on the marketing site: [loadcurl.com/load-test](https://loadcurl.com/load-test).

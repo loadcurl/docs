@@ -82,7 +82,7 @@ const config = {
           href: LINKS.website,
           width: 100,
         },
-        copyright: `Copyright © ${new Date().getFullYear()} ${SITE.name}. Built for developers who ship fast.`,
+        copyright: `Copyright © ${new Date().getFullYear()} ${SITE.legalName}. All rights reserved.`,
       },
       prism: {
         theme: prismThemes.github,

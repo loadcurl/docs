@@ -50,9 +50,9 @@ const FeatureList = [
     featured: true,
     description: (
       <>
-        Stop wrestling with complex tooling. loadcurl gets you from endpoint
-        URL to a full load test in under 60 seconds — paste your URL, set your
-        concurrency, and go.
+        Stop wrestling with complex tooling. loadcurl gets you from an HTTP
+        URL to a running load test in the dashboard — paste curl or fill the
+        form, set target RPS, and go.
       </>
     ),
   },
@@ -62,18 +62,19 @@ const FeatureList = [
     description: (
       <>
         Everything you need to configure, run, and analyze HTTP workloads is
-        documented here — from your first test to CI/CD pipelines and team
-        workflows.
+        documented here — from your first test to reports, Wallet, sessions,
+        and company workspaces.
       </>
     ),
   },
   {
-    title: 'Built to Integrate',
+    title: 'Built for the dashboard',
     icon: 'integrate',
     description: (
       <>
-        Clear API references, real-world examples, and integration guides for
-        GitHub Actions, GitLab CI, and more — all in one searchable site.
+        Step-by-step guides for Create test, live metrics, PDF reports, Settings,
+        and upgrading a personal workspace to a company so the team can share
+        tests and credits.
       </>
     ),
   },

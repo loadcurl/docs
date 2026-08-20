@@ -9,10 +9,10 @@ import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
 const STATS = [
-  {value: '8', label: 'Guides', trend: 'Full tutorial series'},
-  {value: '<60s', label: 'To first test', trend: 'No infra required'},
-  {value: 'CI/CD', label: 'Ready', trend: 'GitHub & GitLab'},
-  {value: 'Free', label: 'Tier', trend: 'Start instantly'},
+  {value: '6', label: 'Guides', trend: 'Tests, dashboard, workspaces'},
+  {value: 'Dashboard', label: 'First test', trend: 'No CLI required'},
+  {value: 'Company', label: 'Upgrade', trend: 'Personal → team'},
+  {value: 'Free', label: 'To start', trend: 'No credit card'},
 ];
 
 function HomepageHeader() {

@@ -12,8 +12,9 @@
 export const SITE = {
   name: 'loadcurl',
   tagline:
-    'Load test your APIs in seconds — no infrastructure, no setup, just results.',
+    'Load test HTTP APIs from the dashboard — paste curl, set RPS, read the report.',
   footerTagline: 'Run load tests with confidence — no infra, no setup.',
+  legalName: 'Loadcurl Pvt Ltd',
   url: 'https://docs.loadcurl.com',
   organizationName: 'loadcurl',
   projectName: 'loadcurl',
@@ -98,6 +99,21 @@ export const FOOTER_LINKS = [
         to: LINKS.docsIntro,
         icon: LINK_ICONS.book,
       },
+      {
+        label: 'Getting started',
+        to: '/docs/tutorial/getting-started',
+        icon: LINK_ICONS.book,
+      },
+      {
+        label: 'Dashboard',
+        to: '/docs/tutorial/dashboard',
+        icon: LINK_ICONS.book,
+      },
+      {
+        label: 'Workspaces',
+        to: '/docs/tutorial/organisation-management',
+        icon: LINK_ICONS.book,
+      },
     ],
   },
   {
@@ -112,6 +128,26 @@ export const FOOTER_LINKS = [
         label: LINK_LABELS.dashboard,
         href: LINKS.dashboard,
         icon: LINK_ICONS.dashboard,
+      },
+    ],
+  },
+  {
+    title: 'Legal',
+    items: [
+      {
+        label: 'Terms',
+        href: 'https://loadcurl.com/terms',
+        icon: LINK_ICONS.world,
+      },
+      {
+        label: 'Privacy',
+        href: 'https://loadcurl.com/privacy',
+        icon: LINK_ICONS.world,
+      },
+      {
+        label: 'Cookies',
+        href: 'https://loadcurl.com/cookies',
+        icon: LINK_ICONS.world,
       },
     ],
   },

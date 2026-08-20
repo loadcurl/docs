@@ -1,136 +1,104 @@
 ---
 id: organisation-management
-title: Organisation Management
-sidebar_label: Organisation Management
-sidebar_position: 7
-description: Invite teammates, assign roles, manage billing, and keep an audit trail across your engineering org.
+title: Workspaces and company upgrade
+sidebar_label: Workspaces
+sidebar_position: 5
+description: Upgrade a personal workspace to a company, invite teammates, and manage Owner, Admin, and Member roles.
 ---
 
-# Organisation Management
+# Workspaces and company upgrade
 
-Load Curl is built for teams. An **Organisation** is a shared workspace where teammates can run tests, view results, and collaborate on scenarios — all under one subscription.
+Load Curl uses **organizations** (workspaces). You always have exactly **one active** workspace. Tests, reports, and credits belong to that workspace.
 
 ---
 
-## Creating an organisation
+## Personal vs company
 
-1. Go to **Settings → Organisation**.
-2. Click **Create Organisation**.
-3. Enter your organisation name (e.g., `Acme Corp Engineering`).
-4. Click **Create**.
+| | Personal | Company |
+|---|---|---|
+| **When** | Created automatically at sign-up | After you upgrade, or when you invite someone |
+| **Members** | Only you (Owner) | Owner, Admins, Members |
+| **Sidebar** | Dashboard, Wallet, Profile, Settings | Same, plus **Organization** |
+| **Credits** | Yours | Shared by the team |
+| **Tests** | Your tests | Team tests |
 
-You are automatically assigned the **Owner** role.
+Company conversion is **one-way**. You cannot turn a company back into a personal workspace.
+
+---
+
+## Upgrade individual to company
+
+You do **not** create a second organization. You convert the personal workspace you already have.
+
+1. Sign in and open **Settings**.
+2. In the workspace card, click **Upgrade to company**.
+3. Enter a **company name** (you can keep the current name).
+4. Confirm. You stay Owner. Invites, roles, and team credits become available.
+5. You are taken to **Organization**.
+
+You can stay the only member after upgrading. The change cannot be undone.
+
+Inviting a teammate from a personal workspace also converts it to a company (same one-way rule).
 
 ---
 
 ## Inviting members
 
-1. In the Organisation settings, click **Invite Member**.
-2. Enter the teammate's email address.
-3. Select their role (see below).
-4. Click **Send Invite**.
+On **Organization** (company only), Owner and Admin can invite:
 
-They will receive an email invitation. Once accepted, they appear in the **Members** list.
+1. Enter the person's **email**.
+2. Choose role **ADMIN** or **MEMBER** (you cannot invite someone as Owner).
+3. Click **Invite**. They get an email with an accept link (valid **7 days**).
 
----
+They must sign in with **that same email**, then open:
 
-## Roles and permissions
+`https://app.loadcurl.com/organization/invite/accept?token=…`
 
-Load Curl uses four roles. Each inherits all permissions of the roles below it.
+Rules:
 
-| Role | Run tests | View results | Manage scenarios | Manage members | Manage billing |
-|---|---|---|---|---|---|
-| **Viewer** | ✗ | ✓ | ✗ | ✗ | ✗ |
-| **Tester** | ✓ | ✓ | ✓ | ✗ | ✗ |
-| **Admin** | ✓ | ✓ | ✓ | ✓ | ✗ |
-| **Owner** | ✓ | ✓ | ✓ | ✓ | ✓ |
-
-### Choosing the right role
-
-- Give **Viewer** access to stakeholders and managers who need to see results but should not trigger tests.
-- Give **Tester** access to QA engineers and developers.
-- Give **Admin** access to team leads who need to manage membership.
-- **Owner** should be limited to one or two people responsible for billing.
+- They cannot already be an active member of **another company**.
+- If they only have a personal workspace, it is **parked**. After they leave your company, that personal workspace is restored (or a new one is created).
+- You cannot invite yourself.
 
 ---
 
-## Projects
+## Roles
 
-Projects let you group related test scenarios and apply separate threshold sets. For example:
+| Role | Run tests | View wallet | Invite / remove | Rename org | Upgrade | Billing / plans | Leave |
+|---|---|---|---|---|---|---|---|
+| **Member** | Yes | View balance | No | No | No | No | Yes |
+| **Admin** | Yes | View + plans | Invite; remove Members; promote Member → Admin | Yes | No | Yes | Yes |
+| **Owner** | Yes | View + plans | All of the above; transfer Owner; remove Admins | Yes | Yes (from personal) | Yes | No — transfer first |
 
-- `Production API` — high thresholds, strict alert policy
-- `Internal Admin API` — relaxed thresholds, no CI/CD gate
-- `Partner Webhooks` — webhook endpoint scenarios
-
-To create a project:
-
-1. Go to **Organisation → Projects**.
-2. Click **New Project**.
-3. Name the project and optionally assign it to specific members.
-
-Scenarios and test history are scoped to their project. Team members can only see projects they have been granted access to.
+- You cannot change your own role.
+- Only Owner can **downgrade** a role or **transfer ownership** (the previous Owner becomes Admin).
+- Owner cannot be removed. Transfer ownership before leaving.
 
 ---
 
-## Shared test library
+## Managing members
 
-All saved scenarios are stored in the organisation's **Shared Test Library**. From there you can:
+On **Organization**:
 
-- Search by name or tag
-- Duplicate a scenario to create a variant
-- View the version history of a scenario
-- Archive scenarios you no longer use
-
----
-
-## Billing
-
-The Owner manages billing from **Settings → Billing**. The page shows:
-
-- Current plan and renewal date
-- Number of seats in use vs. plan limit
-- Monthly usage breakdown by member and project
-- Invoice download links
-
-All plans cover the full organisation under one subscription — there are no per-seat fees on the Starter or Pro plans.
-
-| Plan | Seats | Concurrency |
-|---|---|---|
-| Starter (free) | Unlimited | 50 workers |
-| Pro ($49/mo) | Up to 10 | 5,000 workers |
-| Enterprise (custom) | Unlimited | 100,000+ workers |
+- Change a member's role from the role dropdown (permissions as above).
+- **Remove** a member. They return to their personal workspace. Company credits stay with the company.
+- **Leave organization** (Admin or Member). Same as being removed: personal workspace comes back.
 
 ---
 
-## Audit log
+## Rename
 
-Every action in your organisation is recorded in the **Audit Log** (**Settings → Audit Log**):
-
-- Who ran a test and when
-- Configuration changes to scenarios or thresholds
-- Member invitations, role changes, and removals
-- Billing changes
-
-You can filter the log by member, action type, or date range, and export it as a CSV for compliance requirements.
+- Personal: **Settings** → rename workspace.
+- Company: **Organization** → rename (Owner or Admin).
 
 ---
 
-## Session security
+## Credits and tests
 
-Under **Settings → Security**, every member can see all active login sessions for their own account, including:
-
-| Column | Description |
-|---|---|
-| Device | Device type and browser |
-| Location | Approximate city and country |
-| IP Address | The originating IP |
-| Last active | Timestamp of most recent activity |
-| Status | Current / Active / Idle |
-
-To revoke a suspicious session, click **Revoke** on that row. To sign out of all other devices at once, click **Revoke all other sessions**.
+The workspace **Wallet** holds credits. Company credits are shared. Tests count against the organization's cap, not per person.
 
 ---
 
 ## Next step
 
-You've completed the core tutorial. Head to [**Frequently Asked Questions**](./faq) or explore the **API Reference** to integrate Load Curl programmatically.
+See [**FAQ**](./faq) for limits, security, and billing questions.
