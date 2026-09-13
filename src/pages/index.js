@@ -3,16 +3,93 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import LinkIcon from '@site/src/components/LinkIcon';
 import {LINKS} from '@site/src/constants/links';
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
+const StatIcons = {
+  book: (props) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...props}>
+      <path
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+      />
+      <path
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+      />
+    </svg>
+  ),
+  play: (props) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...props}>
+      <path
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M5 5.5v13l13-6.5L5 5.5z"
+      />
+    </svg>
+  ),
+  users: (props) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...props}>
+      <path
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"
+      />
+      <circle cx="9" cy="7" r="4" strokeWidth="2" />
+      <path
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"
+      />
+    </svg>
+  ),
+  spark: (props) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...props}>
+      <path
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 3v4M12 17v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M3 12h4M17 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
+      />
+    </svg>
+  ),
+};
+
 const STATS = [
-  {value: '6', label: 'Guides', trend: 'Tests, dashboard, workspaces'},
-  {value: 'Dashboard', label: 'First test', trend: 'No CLI required'},
-  {value: 'Company', label: 'Upgrade', trend: 'Personal → team'},
-  {value: 'Free', label: 'To start', trend: 'No credit card'},
+  {
+    title: 'Guides',
+    detail: 'Tests, domains, and plan',
+    to: LINKS.docsIntro,
+    icon: 'book',
+  },
+  {
+    title: 'New test',
+    detail: 'Verify a host, paste curl',
+    to: '/docs/tutorial/getting-started',
+    icon: 'play',
+  },
+  {
+    title: 'Company',
+    detail: 'Personal → team',
+    to: '/docs/tutorial/organisation-management',
+    icon: 'users',
+  },
+  {
+    title: 'Free',
+    detail: 'No credit card',
+    to: '/docs/tutorial/billing',
+    icon: 'spark',
+  },
 ];
 
 function HomepageHeader() {
@@ -31,11 +108,20 @@ function HomepageHeader() {
               <Link
                 className={clsx('button button--lg', styles.ctaPrimary)}
                 to={LINKS.docsIntro}>
-                Get started →
+                Get started
+                <span className={styles.ctaArrow} aria-hidden="true">
+                  →
+                </span>
               </Link>
               <Link
-                className={clsx('button button--lg button--secondary', styles.ctaSecondary)}
-                href={LINKS.dashboard}>
+                className={clsx(
+                  'button button--lg button--secondary',
+                  styles.ctaSecondary,
+                )}
+                href={LINKS.dashboard}
+                target="_blank"
+                rel="noopener noreferrer">
+                <LinkIcon name="dashboard" className={styles.ctaIcon} />
                 Open dashboard
               </Link>
             </div>
@@ -57,13 +143,23 @@ function HomepageHeader() {
         </div>
 
         <div className={styles.statsGrid}>
-          {STATS.map((stat) => (
-            <div key={stat.label} className={styles.statCard}>
-              <p className={styles.statValue}>{stat.value}</p>
-              <p className={styles.statLabel}>{stat.label}</p>
-              <p className={styles.statTrend}>{stat.trend}</p>
-            </div>
-          ))}
+          {STATS.map((stat) => {
+            const Icon = StatIcons[stat.icon];
+            return (
+              <Link key={stat.title} className={styles.statCard} to={stat.to}>
+                <div className={styles.statTop}>
+                  <span className={styles.statIcon} aria-hidden="true">
+                    <Icon className={styles.statIconSvg} />
+                  </span>
+                  <span className={styles.statArrow} aria-hidden="true">
+                    →
+                  </span>
+                </div>
+                <p className={styles.statTitle}>{stat.title}</p>
+                <p className={styles.statDetail}>{stat.detail}</p>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </header>
@@ -73,9 +169,7 @@ function HomepageHeader() {
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <Layout
-      title={siteConfig.title}
-      description="loadcurl documentation">
+    <Layout title={siteConfig.title} description="loadcurl documentation">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

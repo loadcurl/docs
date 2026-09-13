@@ -10,9 +10,9 @@
 
 /** Site metadata (used in docusaurus.config.js) */
 export const SITE = {
-  name: 'loadcurl',
+  name: 'Loadcurl',
   tagline:
-    'Load test HTTP APIs from the dashboard — paste curl, set RPS, read the report.',
+    'Load test HTTP APIs from the dashboard — verify a host, paste curl, set RPS, read the report.',
   footerTagline: 'Run load tests with confidence — no infra, no setup.',
   legalName: 'Loadcurl Pvt Ltd',
   url: 'https://docs.loadcurl.com',
@@ -48,6 +48,7 @@ export const LINK_ICONS = {
   dashboard: 'dashboard',
   github: 'github',
   discord: 'discord',
+  twitter: 'twitter',
   book: 'book',
 };
 
@@ -59,6 +60,7 @@ export const LINK_LABELS = {
   docs: 'Docs',
   intro: 'Introduction',
   discord: 'Discord',
+  twitter: 'Twitter',
 };
 
 /** Navbar items — spread into themeConfig.navbar.items */
@@ -92,31 +94,6 @@ export const NAVBAR_ITEMS = [
 /** Footer link groups — spread into themeConfig.footer.links */
 export const FOOTER_LINKS = [
   {
-    title: 'Docs',
-    items: [
-      {
-        label: LINK_LABELS.intro,
-        to: LINKS.docsIntro,
-        icon: LINK_ICONS.book,
-      },
-      {
-        label: 'Getting started',
-        to: '/docs/tutorial/getting-started',
-        icon: LINK_ICONS.book,
-      },
-      {
-        label: 'Dashboard',
-        to: '/docs/tutorial/dashboard',
-        icon: LINK_ICONS.book,
-      },
-      {
-        label: 'Workspaces',
-        to: '/docs/tutorial/organisation-management',
-        icon: LINK_ICONS.book,
-      },
-    ],
-  },
-  {
     title: 'Product',
     items: [
       {
@@ -132,26 +109,6 @@ export const FOOTER_LINKS = [
     ],
   },
   {
-    title: 'Legal',
-    items: [
-      {
-        label: 'Terms',
-        href: 'https://loadcurl.com/terms',
-        icon: LINK_ICONS.world,
-      },
-      {
-        label: 'Privacy',
-        href: 'https://loadcurl.com/privacy',
-        icon: LINK_ICONS.world,
-      },
-      {
-        label: 'Cookies',
-        href: 'https://loadcurl.com/cookies',
-        icon: LINK_ICONS.world,
-      },
-    ],
-  },
-  {
     title: 'Community',
     items: [
       {
@@ -159,11 +116,33 @@ export const FOOTER_LINKS = [
         href: LINKS.github,
         icon: LINK_ICONS.github,
       },
+      {
+        label: LINK_LABELS.twitter,
+        href: LINKS.twitter,
+        icon: LINK_ICONS.twitter,
+      },
       // {
       //   label: LINK_LABELS.discord,
       //   href: LINKS.discord,
       //   icon: LINK_ICONS.discord,
       // },
+    ],
+  },
+  {
+    title: 'Legal',
+    items: [
+      {
+        label: 'Terms',
+        href: 'https://loadcurl.com/terms',
+      },
+      {
+        label: 'Privacy',
+        href: 'https://loadcurl.com/privacy',
+      },
+      {
+        label: 'Cookies',
+        href: 'https://loadcurl.com/cookies',
+      },
     ],
   },
 ];

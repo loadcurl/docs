@@ -1,7 +1,24 @@
 .footerLogoLink {
+  align-items: center;
   display: inline-flex;
+  height: var(--loadcurl-size-logo);
+  line-height: 0;
   opacity: 1;
+  overflow: hidden;
   transition: opacity 0.15s ease;
+  width: var(--loadcurl-size-logo);
+}
+
+.footerLogoLink :global(.footer__logo) {
+  display: block;
+  height: var(--loadcurl-size-logo);
+  margin: 0;
+  max-height: var(--loadcurl-size-logo);
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.25);
+  width: var(--loadcurl-size-logo);
 }
 
 .footerLogoLink:hover {

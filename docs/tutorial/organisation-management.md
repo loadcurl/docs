@@ -2,13 +2,13 @@
 id: organisation-management
 title: Workspaces and company upgrade
 sidebar_label: Workspaces
-sidebar_position: 5
+sidebar_position: 6
 description: Upgrade a personal workspace to a company, invite teammates, and manage Owner, Admin, and Member roles.
 ---
 
 # Workspaces and company upgrade
 
-Load Curl uses **organizations** (workspaces). You always have exactly **one active** workspace. Tests, reports, and credits belong to that workspace.
+Loadcurl uses **organizations** (workspaces). You always have exactly **one active** workspace. Tests, reports, domains, request quota, and billing belong to that workspace.
 
 ---
 
@@ -18,8 +18,9 @@ Load Curl uses **organizations** (workspaces). You always have exactly **one act
 |---|---|---|
 | **When** | Created automatically at sign-up | After you upgrade, or when you invite someone |
 | **Members** | Only you (Owner) | Owner, Admins, Members |
-| **Sidebar** | Dashboard, Wallet, Profile, Settings | Same, plus **Organization** |
-| **Credits** | Yours | Shared by the team |
+| **Sidebar** | Dashboard, Tests, Domains, Plan, Usage, Account, Support | Same, plus **Organization** (members) |
+| **Domains** | Up to **1** | Up to **10** |
+| **Quota** | Yours | Shared by the team |
 | **Tests** | Your tests | Team tests |
 
 Company conversion is **one-way**. You cannot turn a company back into a personal workspace.
@@ -30,10 +31,10 @@ Company conversion is **one-way**. You cannot turn a company back into a persona
 
 You do **not** create a second organization. You convert the personal workspace you already have.
 
-1. Sign in and open **Settings**.
-2. In the workspace card, click **Upgrade to company**.
+1. Sign in and open **Account**.
+2. In the workspace card, click **Upgrade to a company**.
 3. Enter a **company name** (you can keep the current name).
-4. Confirm. You stay Owner. Invites, roles, and team credits become available.
+4. Confirm. You stay Owner. Invites, roles, and a shared quota become available.
 5. You are taken to **Organization**.
 
 You can stay the only member after upgrading. The change cannot be undone.
@@ -64,11 +65,16 @@ Rules:
 
 ## Roles
 
-| Role | Run tests | View wallet | Invite / remove | Rename org | Upgrade | Billing / plans | Leave |
-|---|---|---|---|---|---|---|---|
-| **Member** | Yes | View balance | No | No | No | No | Yes |
-| **Admin** | Yes | View + plans | Invite; remove Members; promote Member → Admin | Yes | No | Yes | Yes |
-| **Owner** | Yes | View + plans | All of the above; transfer Owner; remove Admins | Yes | Yes (from personal) | Yes | No — transfer first |
+| Permission | Member | Admin | Owner |
+|---|---|---|---|
+| Run tests | Yes | Yes | Yes |
+| View usage | View quota | View | View |
+| Invite / remove | No | Invite; remove Members;<br />promote Member → Admin | All of the above;<br />transfer Owner; remove Admins |
+| Rename org | No | Yes | Yes |
+| Upgrade | No | No | Yes (from personal) |
+| Plan checkout | No | Yes | Yes |
+| Manage domains | View only | Yes | Yes |
+| Leave | Yes | Yes | No — transfer first |
 
 - You cannot change your own role.
 - Only Owner can **downgrade** a role or **transfer ownership** (the previous Owner becomes Admin).
@@ -81,24 +87,24 @@ Rules:
 On **Organization**:
 
 - Change a member's role from the role dropdown (permissions as above).
-- **Remove** a member. They return to their personal workspace. Company credits stay with the company.
+- **Remove** a member. They return to their personal workspace. Company quota stays with the company.
 - **Leave organization** (Admin or Member). Same as being removed: personal workspace comes back.
 
 ---
 
 ## Rename
 
-- Personal: **Settings** → rename workspace.
+- Personal: **Account** → rename workspace.
 - Company: **Organization** → rename (Owner or Admin).
 
 ---
 
-## Credits and tests
+## Domains, tests, and quota
 
-The workspace **Wallet** holds credits. Company credits are shared. Tests count against the organization's cap, not per person.
+Verified **domains**, **tests**, and **request quota** are scoped to the workspace. Company members share one pool. See [**Verify a domain**](./domains) and [**Plan and usage**](./billing).
 
 ---
 
 ## Next step
 
-See [**FAQ**](./faq) for limits, security, and billing questions.
+See [**Plan and usage**](./billing) for checkout and quota, or [**FAQ**](./faq) for limits and security questions.

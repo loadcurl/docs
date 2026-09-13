@@ -2,8 +2,8 @@
 id: faq
 title: Frequently Asked Questions
 sidebar_label: FAQ
-sidebar_position: 6
-description: Answers about Load Curl accounts, tests, workspaces, reports, and security.
+sidebar_position: 8
+description: Answers about Loadcurl accounts, tests, domains, workspaces, reports, billing, and security.
 ---
 
 # Frequently Asked Questions
@@ -12,9 +12,9 @@ description: Answers about Load Curl accounts, tests, workspaces, reports, and s
 
 ## General
 
-### What is Load Curl?
+### What is Loadcurl?
 
-Load Curl is a cloud HTTP load testing product. You configure a request in the [dashboard](https://app.loadcurl.com), set target RPS, ramp-up, and duration, and Load Curl runs the traffic. You get live metrics and a detailed report (latency, throughput, HTTP outcomes) plus PDF export.
+Loadcurl is a cloud HTTP load testing product. You configure a request in the [dashboard](https://app.loadcurl.com), verify the host, set target RPS, ramp-up, and duration, and Loadcurl runs the traffic. You get live status (polled about every 3 seconds) and a detailed report (latency, throughput, HTTP outcomes) plus PDF export. Usage is gated by **request quota** on your plan.
 
 ### Do I need to install anything?
 
@@ -22,7 +22,7 @@ No. Use the web dashboard. There is no CLI or CI/CD integration in the current p
 
 ### Is there a free way to start?
 
-Yes. Register without a credit card. A personal workspace is created automatically. See **Wallet** in the app for plan comparison (Free, Starter, Growth, Scale).
+Yes. Register without a credit card. A personal workspace is created on the **Free** plan. See **Plan** in the app for live prices and limits (US or India).
 
 ---
 
@@ -30,31 +30,53 @@ Yes. Register without a credit card. A personal workspace is created automatical
 
 ### How do I run a test?
 
-Dashboard → **Create test** → method and URL (or paste curl / Postman) → set target traffic, ramp-up, and duration → **Start test**. Details: [Getting Started](./getting-started).
+1. Verify a domain (**Domains**).
+2. **New test** → method and URL (or paste curl / Postman).
+3. Set target traffic, ramp-up, and duration.
+4. **Start test** (needs enough available quota).
+
+Details: [Getting Started](./getting-started).
 
 ### What HTTP methods are supported?
 
-GET, POST, PUT, PATCH, DELETE in the dashboard (the API also accepts HEAD and OPTIONS). Body must be a JSON object when used.
+GET, POST, PUT, PATCH, DELETE in the dashboard. Body must be a JSON object when used (POST, PUT, PATCH).
 
 ### Can I chain multiple endpoints in one scenario?
 
 Not in the current product. Each test is a single HTTP request repeated under the load profile.
 
-### What are the live limits?
+### Why can't I start a test?
 
-Duration **30–120 seconds**, target traffic up to **10,000 RPS**, and a **per-workspace test count** (shown as remaining tests on the Dashboard). Some internal accounts may be unrestricted.
+Common blockers:
+
+- No **verified domain** matching the URL host
+- Not enough **available** requests (`duration × RPS`)
+- Duration or RPS above the **current plan** cap
+- Workspace **test count** cap reached (currently **5**)
 
 ### Will this hit production?
 
-Yes if you enter a production URL. Traffic is real. Use staging when you are exploring. Only test systems you are allowed to test.
+Yes if you enter a production URL. Traffic is real. Use staging when you are exploring. Only test systems you are allowed to test. Domain verification proves you control the host; it does not make production traffic safe.
 
 ### Can I stop a test?
 
-Yes. Stop from the Dashboard or the run page while it is running.
+Yes. Stop from the Dashboard live list or the run page. Unused quota hold is released.
 
 ### How do I get a report?
 
-Open the run from history. When processing finishes, view metrics on the page and download a PDF. Reports are not public links.
+Open the run from Dashboard or Tests. When processing finishes, view metrics on the page and download a PDF. Reports are not public links.
+
+### Does the run page use websockets?
+
+No. It polls about every 3 seconds for status, then for the report after the run finishes.
+
+---
+
+## Domains
+
+### Do I have to verify a domain?
+
+Yes. Tests may only target a verified hostname or a subdomain of one. Personal workspaces: **1** domain. Company: **10**. See [Verify a domain](./domains).
 
 ---
 
@@ -62,11 +84,11 @@ Open the run from history. When processing finishes, view metrics on the page an
 
 ### Do I need to create an organization?
 
-No. Sign-up creates a personal workspace. Upgrade from **Settings** when you want a company.
+No. Sign-up creates a personal workspace. Upgrade from **Account** when you want a company.
 
 ### How do I upgrade individual to company?
 
-Settings → **Upgrade to company** → enter a name → confirm. One-way. See [Workspaces and company upgrade](./organisation-management).
+Account → **Upgrade to a company** → enter a name → confirm. One-way. See [Workspaces and company upgrade](./organisation-management).
 
 ### What roles exist?
 
@@ -82,7 +104,7 @@ No. One active organization per user. Joining a company parks your personal work
 
 ### How do I manage devices?
 
-Settings → **Sessions**. Sign out one device or log out all others.
+Account → **Sessions**. Sign out one device or log out all others. New-device sign-ins can send an inbox notification and email.
 
 ### How are credentials stored for tests?
 
@@ -92,7 +114,7 @@ Request headers and bodies you enter are stored to run the test and show the rep
 
 An HttpOnly **refresh_token** cookie keeps you signed in. The access token stays in memory. A device id is stored in local storage. See the [Cookie Policy](https://loadcurl.com/cookies).
 
-### Does Load Curl support Google sign-in?
+### Does Loadcurl support Google sign-in?
 
 Yes, on the login and register screens.
 
@@ -100,13 +122,17 @@ Yes, on the login and register screens.
 
 ## Billing
 
-### Where are plans and credits?
+### Where are plans and quota?
 
-**Wallet** in the dashboard. Company members share credits. Members can view balance; Owner and Admin see plans.
+**Plan** is checkout and comparison. **Usage** is allotted / available / held / used, holds, and the ledger. Company members share one pool. Members can view; Owner and Admin check out with Razorpay.
+
+### How does a hold work?
+
+Start reserves `duration × RPS`. After the report, actual hits are consumed and leftover hold returns. Unused period quota does not roll into the next period.
 
 ### Is checkout live?
 
-Wallet pricing in the API is marked illustrative until payment checkout is connected. Use the in-app Wallet as the source of truth for what you can purchase.
+Yes, for paid plans via Razorpay (Owner/Admin). You can apply an upgrade now, queue a recharge after the current period, cancel a pending checkout, or activate a scheduled plan.
 
 ---
 
@@ -114,4 +140,4 @@ Wallet pricing in the API is marked illustrative until payment checkout is conne
 
 ### How do I get help?
 
-Email [hello@loadcurl.io](mailto:hello@loadcurl.io). Product docs: [docs.loadcurl.com](https://docs.loadcurl.com). Guide on the marketing site: [loadcurl.com/load-test](https://loadcurl.com/load-test).
+Open **Support** in the dashboard and create a ticket, or email [hello@loadcurl.io](mailto:hello@loadcurl.io). Product docs: [docs.loadcurl.com](https://docs.loadcurl.com). Guide on the marketing site: [loadcurl.com/load-test](https://loadcurl.com/load-test).

@@ -16,22 +16,14 @@ export default function FooterLayout({style, links, logo, copyright}) {
       })}>
       <div className="container container-fluid">
         <div className={styles.footerInner}>
-          <div className={styles.brandRow}>
+          <div className={styles.brand}>
             <div className={styles.brandIdentity}>
-              {logo ? (
-                <div className={styles.brandLogo}>{logo}</div>
-              ) : (
-                <span className={styles.brandName}>{siteConfig.title}</span>
-              )}
-              <div className={styles.brandCopy}>
-                {!logo ? null : (
-                  <span className={styles.brandName}>{siteConfig.title}</span>
-                )}
-                <p className={styles.brandTagline}>
-                  {SITE.footerTagline ?? siteConfig.tagline}
-                </p>
-              </div>
+              {logo ? <div className={styles.brandLogo}>{logo}</div> : null}
+              <span className={styles.brandName}>{SITE.name}</span>
             </div>
+            <p className={styles.brandTagline}>
+              {SITE.footerTagline ?? siteConfig.tagline}
+            </p>
 
             <div className={styles.brandActions}>
               <Link className={styles.brandCta} to={LINKS.docsIntro}>
@@ -47,12 +39,7 @@ export default function FooterLayout({style, links, logo, copyright}) {
             </div>
           </div>
 
-          {links ? (
-            <div className={styles.linksShell}>
-              <div className={styles.linksShellGlow} aria-hidden="true" />
-              {links}
-            </div>
-          ) : null}
+          {links ? <div className={styles.links}>{links}</div> : null}
         </div>
 
         {copyright ? (

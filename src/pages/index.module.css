@@ -1,5 +1,6 @@
 /**
  * Homepage — Medcare-style dashboard landing.
+ * Type scale: 12 / 14 / 16 / 18 / 24 / 32 (kicker, body, subtitle, card title, section, hero).
  */
 
 .hero {
@@ -14,6 +15,7 @@
 }
 
 .heroCard {
+  animation: fadeUp 0.55s ease both;
   background: var(--loadcurl-card);
   border: 1px solid var(--loadcurl-border);
   border-radius: var(--loadcurl-radius-xl);
@@ -26,6 +28,7 @@
 
 @media screen and (min-width: 997px) {
   .heroCard {
+    align-items: stretch;
     grid-template-columns: 1fr 280px;
     padding: 2.5rem 2.75rem;
   }
@@ -35,6 +38,27 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  justify-content: center;
+}
+
+.heroContent > * {
+  animation: fadeUp 0.5s ease both;
+}
+
+.heroContent > *:nth-child(1) {
+  animation-delay: 0.08s;
+}
+
+.heroContent > *:nth-child(2) {
+  animation-delay: 0.16s;
+}
+
+.heroContent > *:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.heroContent > *:nth-child(4) {
+  animation-delay: 0.32s;
 }
 
 .heroBadge {
@@ -42,10 +66,11 @@
   background: var(--loadcurl-accent);
   border-radius: 999px;
   color: var(--loadcurl-accent-foreground);
-  font-size: 0.6875rem;
+  font-size: var(--loadcurl-text-2xs);
   font-weight: 600;
   letter-spacing: 0.06em;
-  padding: 0.35rem 0.75rem;
+  line-height: 1;
+  padding: 0.3rem 0.75rem;
   text-transform: uppercase;
 }
 
@@ -56,22 +81,16 @@
 
 .heroTitle {
   color: var(--loadcurl-heading);
-  font-size: 2rem;
+  font-size: var(--loadcurl-text-4xl);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.15;
   margin: 0;
 }
 
-@media screen and (min-width: 1280px) {
-  .heroTitle {
-    font-size: 2.75rem;
-  }
-}
-
 .heroSubtitle {
   color: var(--loadcurl-muted-foreground);
-  font-size: 1.0625rem;
+  font-size: var(--loadcurl-text-md);
   line-height: 1.6;
   margin: 0;
   max-width: 34rem;
@@ -88,10 +107,14 @@
 .ctaSecondary {
   align-items: center;
   display: inline-flex !important;
+  font-size: var(--loadcurl-text-sm) !important;
+  gap: 0.45rem;
   justify-content: center;
   line-height: 1.25;
-  min-height: 2.75rem;
-  padding: 0 1.5rem !important;
+  min-height: var(--loadcurl-size-control);
+  padding: 0 1.25rem !important;
+  transition: transform 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 .ctaPrimary {
@@ -106,7 +129,13 @@
 .ctaPrimary:hover {
   background: var(--loadcurl-primary-hover) !important;
   border-color: var(--loadcurl-primary-hover) !important;
+  box-shadow: 0 6px 16px rgba(34, 197, 94, 0.32);
   color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.ctaPrimary:hover .ctaArrow {
+  transform: translateX(4px);
 }
 
 .ctaSecondary {
@@ -114,8 +143,30 @@
   font-weight: 600;
 }
 
+.ctaSecondary:hover {
+  border-color: rgba(34, 197, 94, 0.45) !important;
+  transform: translateY(-1px);
+}
+
+.ctaSecondary:hover .ctaIcon {
+  transform: scale(1.08);
+}
+
+.ctaIcon {
+  height: 1rem !important;
+  width: 1rem !important;
+  transition: transform 0.2s ease;
+}
+
+.ctaArrow {
+  display: inline-block;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
 .heroAccent {
   align-items: center;
+  animation: fadeUp 0.6s ease 0.2s both;
   background: var(--loadcurl-gradient-kpi);
   border-radius: var(--loadcurl-radius-lg);
   color: #ffffff;
@@ -129,6 +180,7 @@
 }
 
 .heroAccent::before {
+  animation: orbDrift 8s ease-in-out infinite;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 50%;
   content: '';
@@ -141,40 +193,43 @@
 
 .heroAccentIcon {
   align-items: center;
+  animation: floatPulse 3.2s ease-in-out infinite;
   background: rgba(255, 255, 255, 0.2);
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   display: flex;
-  height: 3.5rem;
+  height: var(--loadcurl-size-icon-box);
   justify-content: center;
-  margin-bottom: 1rem;
-  width: 3.5rem;
+  margin-bottom: 0.75rem;
+  width: var(--loadcurl-size-icon-box);
 }
 
 .heroAccentIcon svg {
-  height: 1.75rem;
-  width: 1.75rem;
+  height: var(--loadcurl-icon-md);
+  width: var(--loadcurl-icon-md);
 }
 
 .heroAccentLabel {
-  font-size: 0.875rem;
+  font-size: var(--loadcurl-text-sm);
+  line-height: 1.4;
   margin: 0;
   opacity: 0.85;
 }
 
 .heroAccentValue {
-  font-size: 1.375rem;
+  font-size: var(--loadcurl-text-lg);
   font-weight: 700;
   letter-spacing: -0.02em;
+  line-height: 1.3;
   margin: 0.15rem 0 0;
 }
 
-/* KPI stat row */
+/* Compact nav tiles — icon, title, caption. One accent lives in the feature row. */
 .statsGrid {
   display: grid;
-  gap: 1rem;
+  gap: 0.75rem;
   grid-template-columns: 1fr;
   margin-top: 1.25rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.25rem;
 }
 
 @media screen and (min-width: 640px) {
@@ -190,52 +245,161 @@
 }
 
 .statCard {
+  animation: fadeUp 0.5s ease both;
   background: var(--loadcurl-card);
   border: 1px solid var(--loadcurl-border);
   border-radius: var(--loadcurl-radius-lg);
   box-shadow: var(--loadcurl-shadow);
-  padding: 1.25rem 1.5rem;
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.15rem 1.25rem 1.2rem;
+  text-decoration: none !important;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.statCard:nth-child(1) {
+  animation-delay: 0.28s;
+}
+
+.statCard:nth-child(2) {
+  animation-delay: 0.36s;
+}
+
+.statCard:nth-child(3) {
+  animation-delay: 0.44s;
+}
+
+.statCard:nth-child(4) {
+  animation-delay: 0.52s;
 }
 
 .statCard:hover {
-  border-color: rgba(34, 197, 94, 0.3);
+  border-color: rgba(34, 197, 94, 0.35);
   box-shadow: var(--loadcurl-shadow-lg);
+  color: inherit;
+  text-decoration: none !important;
+  transform: translateY(-2px);
 }
 
-.statCard:first-child {
-  background: var(--loadcurl-gradient-kpi);
-  border-color: transparent;
-  color: #ffffff;
+.statCard:hover .statArrow {
+  color: var(--loadcurl-primary);
+  transform: translateX(3px);
 }
 
-.statCard:first-child .statLabel,
-.statCard:first-child .statTrend {
-  color: rgba(255, 255, 255, 0.85);
+.statCard:focus-visible {
+  outline: 2px solid var(--loadcurl-primary);
+  outline-offset: 3px;
 }
 
-.statValue {
-  color: var(--loadcurl-heading);
-  font-size: 1.75rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  margin: 0 0 0.35rem;
+.statTop {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.55rem;
 }
 
-.statCard:first-child .statValue {
-  color: #ffffff;
+.statIcon {
+  align-items: center;
+  background: var(--loadcurl-muted);
+  border-radius: 0.7rem;
+  color: var(--loadcurl-teal);
+  display: inline-flex;
+  height: 2.25rem;
+  justify-content: center;
+  width: 2.25rem;
 }
 
-.statLabel {
-  color: var(--loadcurl-heading);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  margin: 0;
+[data-theme='dark'] .statIcon {
+  background: rgba(15, 118, 110, 0.2);
+  color: #34d399;
 }
 
-.statTrend {
+.statIconSvg {
+  height: var(--loadcurl-icon-sm);
+  width: var(--loadcurl-icon-sm);
+}
+
+.statArrow {
   color: var(--loadcurl-muted-foreground);
-  font-size: 0.75rem;
-  margin: 0.35rem 0 0;
+  font-size: var(--loadcurl-text-md);
+  line-height: 1;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.statTitle {
+  color: var(--loadcurl-heading);
+  font-size: var(--loadcurl-text-lg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.statDetail {
+  color: var(--loadcurl-muted-foreground);
+  font-size: var(--loadcurl-text-sm);
+  line-height: 1.45;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatPulse {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes orbDrift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-10px, 12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroCard,
+  .heroContent > *,
+  .heroAccent,
+  .heroAccent::before,
+  .heroAccentIcon,
+  .statCard {
+    animation: none;
+  }
+
+  .ctaPrimary,
+  .ctaSecondary,
+  .ctaIcon,
+  .ctaArrow,
+  .statCard,
+  .statArrow {
+    transition: none !important;
+  }
 }

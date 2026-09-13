@@ -1,20 +1,62 @@
 ---
 id: report-card
-title: Reading test reports
-sidebar_label: Test reports
-sidebar_position: 3
-description: Understand latency, throughput, success rates, and PDF export for a Load Curl test run.
+title: Tests and reports
+sidebar_label: Tests and reports
+sidebar_position: 4
+description: Create tests, follow a live run, and read latency, throughput, and PDF export in Loadcurl.
 ---
 
-# Reading test reports
+# Tests and reports
 
-Every completed (or failed) run has a **report** on the test details page at `/tests/{runId}`. Open a run from Dashboard history. While a report is still being calculated, the page shows a processing state — refresh or wait; it is not a letter grade.
+Tests live under **Tests** in the sidebar. Compose on **New test** (`/tests/new`). Open a run at `/tests/{runId}` from Dashboard or history.
+
+---
+
+## Tests list
+
+**Tests** (`/tests`) shows workspace KPIs (**Your tests** or **Team tests**, completed, failed, running) and **Test history**:
+
+- Search by name or URL
+- Filter: All / Running / Completed / Failed
+- **New test** to open the composer
+
+Running includes pending and provisioned as well as actively sending traffic.
+
+Each workspace has a **test count cap** (currently **5** scenarios). Remaining capacity also shows on the Dashboard.
+
+---
+
+## Live run page
+
+After **Start test**, the run page polls about every **3 seconds** (no websockets).
+
+**Header:** back to Tests; **Stop Test** while the run is live.
+
+You will see:
+
+- Method, URL, status, created / started / completed times
+- Duration, ramp-up, and target RPS
+- Timeline: **Created → Resources → Testing → Report** plus failed or stopped
+- **Request hold**: Reserved / Consumed / Returned (HELD, SETTLED, or RELEASED)
+
+Stopping a live run marks it failed and **releases** the unused hold back to available quota.
+
+Statuses: **pending → provisioned → running → completed** or **failed**.
 
 ---
 
 ## What the report contains
 
+Every completed (or failed) run has a **report** on the same page. While it is still being calculated, you see a processing state — wait; it is not a letter grade.
+
 The report is built from request summaries, throughput, and latency samples collected during the run.
+
+### Highlights
+
+- Success rate
+- Total requests
+- Average latency
+- Average RPS
 
 ### Request summary
 
@@ -32,19 +74,27 @@ Use this to see whether errors are HTTP status codes, timeouts, or connection fa
 - Target RPS (what you configured)
 - Average, peak, and minimum RPS achieved
 - Successful / completed RPS
-- RPS achievement ratio (delivered vs target)
+- RPS vs target
 - Response bytes and bytes per second (average and peak)
 
 If average RPS is far below target, the endpoint or network could not keep up, or errors cut throughput.
 
 ### Latency
 
-Percentiles and stats, often grouped for **all**, **completed**, **successful**, and **failed** requests:
+Percentiles and stats, often grouped for **all**, **completed**, and **successful** requests:
 
 - Min, average, max, standard deviation
 - p50, p75, p90, p95, p99
 
-p95 / p99 describe what slower requests experienced. Compare successful vs failed groups if error latency looks different from happy-path latency.
+p95 / p99 describe what slower requests experienced.
+
+### Request results
+
+A paginated list of individual outcomes (**Completed**, **Timeout**, **Error**) with status codes. Expand a row for body or error detail when present.
+
+### PDF
+
+**Download PDF** after the report is ready. There is no public share link. Anyone who needs the numbers should be in the same workspace, or you can send the PDF.
 
 ---
 
@@ -52,20 +102,23 @@ p95 / p99 describe what slower requests experienced. Compare successful vs faile
 
 | View | When | What you get |
 |---|---|---|
-| **Live snapshot** | While status is running | In-progress counts and latency so far |
-| **Final report** | After the run completes | Full summary, throughput, and latency |
+| **Live status** | Pending, provisioned, or running | Timeline, live totals, success, failures, RPS |
+| **Final report** | After the run completes or fails | Full summary, throughput, latency, request results |
 | **PDF** | After the report is ready | Same metrics in a downloadable file |
-
-There is no public share link. Anyone who needs the numbers should be in the same workspace, or you can send the PDF.
 
 ---
 
-## Dashboard summary cards
+## Quota after a run
 
-On the home Dashboard, cards show workspace-level totals (your tests vs team tests in a company), running count, and remaining tests. They are not the per-run report — open a run for the full breakdown.
+Starting a test **holds** `duration × RPS` requests (minimum 1) from this period’s quota.
+
+- When the report is ready, actual hits are **consumed** and unused hold is **returned**.
+- If you stop the test or it fails before a report, the hold is **released**.
+
+See [**Plan and usage**](./billing).
 
 ---
 
 ## Next step
 
-See [**Dashboard and account**](./dashboard) to manage settings, sessions, and credits.
+See [**Dashboard and account**](./dashboard) for navigation, sessions, and Support.

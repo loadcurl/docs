@@ -48,58 +48,41 @@ const FeatureList = [
     title: 'Simple by Design',
     icon: 'zap',
     featured: true,
-    description: (
-      <>
-        Stop wrestling with complex tooling. loadcurl gets you from an HTTP
-        URL to a running load test in the dashboard — paste curl or fill the
-        form, set target RPS, and go.
-      </>
-    ),
+    description:
+      'From a verified host to a running load test — paste curl or fill the form on New test, set target RPS, and go.',
   },
   {
     title: 'Focus on Performance',
     icon: 'chart',
-    description: (
-      <>
-        Everything you need to configure, run, and analyze HTTP workloads is
-        documented here — from your first test to reports, Wallet, sessions,
-        and company workspaces.
-      </>
-    ),
+    description:
+      'Configure, run, and analyze HTTP workloads — domains, first test, reports, Plan, Usage, and company workspaces.',
   },
   {
     title: 'Built for the dashboard',
     icon: 'integrate',
-    description: (
-      <>
-        Step-by-step guides for Create test, live metrics, PDF reports, Settings,
-        and upgrading a personal workspace to a company so the team can share
-        tests and credits.
-      </>
-    ),
+    description:
+      'Guides for New test, live run polling, PDF reports, Account, and upgrading a personal workspace to a company.',
   },
 ];
 
 function Feature({title, icon, description, featured}) {
   const Icon = FeatureIcons[icon];
   return (
-    <div className={clsx('col col--4', 'margin-bottom--lg')}>
-      <div
-        className={clsx(styles.featureCard, featured && styles.featureCardFeatured)}>
-        {Icon ? (
-          <div
-            className={clsx(
-              styles.featureIcon,
-              featured && styles.featureIconFeatured,
-            )}
-            aria-hidden="true">
-            <Icon className={styles.featureIconSvg} />
-          </div>
-        ) : null}
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
-    </div>
+    <article
+      className={clsx(styles.featureCard, featured && styles.featureCardFeatured)}>
+      {Icon ? (
+        <div
+          className={clsx(
+            styles.featureIcon,
+            featured && styles.featureIconFeatured,
+          )}
+          aria-hidden="true">
+          <Icon className={styles.featureIconSvg} />
+        </div>
+      ) : null}
+      <Heading as="h3">{title}</Heading>
+      <p>{description}</p>
+    </article>
   );
 }
 
@@ -111,9 +94,9 @@ export default function HomepageFeatures() {
         <Heading as="h2" className={styles.sectionTitle}>
           Everything you need to load test with confidence
         </Heading>
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
+        <div className={styles.featureGrid}>
+          {FeatureList.map((props) => (
+            <Feature key={props.title} {...props} />
           ))}
         </div>
       </div>

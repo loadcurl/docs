@@ -1,5 +1,5 @@
 .icon {
-  width: 1em;
-  height: 1em;
+  width: var(--loadcurl-icon-sm);
+  height: var(--loadcurl-icon-sm);
   flex-shrink: 0;
 }

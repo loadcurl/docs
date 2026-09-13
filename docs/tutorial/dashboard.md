@@ -2,8 +2,8 @@
 id: dashboard
 title: Dashboard and account
 sidebar_label: Dashboard
-sidebar_position: 4
-description: Navigate the Load Curl dashboard — tests, Wallet, Profile, Settings, sessions, and password.
+sidebar_position: 5
+description: Navigate the Loadcurl dashboard — tests, Plan, Usage, Account, sessions, notifications, and Support.
 ---
 
 # Dashboard and account
@@ -14,72 +14,62 @@ After you sign in, everything happens in the [dashboard](https://app.loadcurl.co
 
 ## Sidebar
 
-| Item | Where | What it is for |
-|---|---|---|
-| **Dashboard** | `/` | Create tests, summary cards, run history |
-| **Organization** | `/organization` | Company workspaces only — members, invites, leave |
-| **Wallet** | `/wallet` | Credits for this workspace and plan comparison |
-| **Profile** | `/profile` | Name, email, verification status, personal vs company |
-| **Settings** | `/settings` | Workspace name, upgrade, password, email, sessions |
+| Section | Item | Where | What it is for |
+|---|---|---|---|
+| Testing | **Dashboard** | `/` | Overview: quota, alerts, live and recent tests |
+| Testing | **Tests** | `/tests` | History, filters, KPIs |
+| Workspace | **\{org name\}** | `/organization` | Company only — members, invites, leave |
+| Workspace | **Domains** | `/organization/domains` | Verify hosts you will load-test |
+| Billing | **Plan** | `/billing` | Current plan, comparison, Razorpay checkout |
+| Billing | **Usage** | `/wallet` | Request quota, holds, ledger |
+| Account | **Account** | `/account` | Profile, email, password, sessions, upgrade |
+| Help | **Support** | `/support` | Tickets |
 
-Personal accounts do not see **Organization** in the sidebar. Upgrade first (see [Workspaces and company upgrade](./organisation-management)).
+Personal accounts do not see the company **Organization** item. Upgrade first (see [Workspaces and company upgrade](./organisation-management)). **Domains** is available for both personal and company workspaces.
 
-**New test** in the header jumps to the create-test form on the Dashboard.
+**New test** in the header opens `/tests/new` (hidden while you are already on Tests or New test).
+
+The header also shows a **request quota chip** (Available / Held / Plan quota) that links to **Usage**, plus **notifications**.
 
 ---
 
 ## Dashboard home
 
-1. **Summary** — total tests, running tests, remaining capacity for the workspace.
-2. **Create test** — request builder, paste curl / Postman, load configuration, start.
-3. **History** — search, filter by status (running / completed / failed), page through runs, open a run.
+Dashboard is **not** the request builder. It is an overview:
 
-Company members share the same test list and remaining capacity. Copy in the UI says **Team tests** instead of **Your tests**.
+1. Alerts — verify a domain, last test failed, low quota, period ending soon
+2. Hero — first run prompt, or quota headline with **New test** / **Test history**
+3. Quota panel — links to **Usage** and **Plan**
+4. **Now** — live tests with Open / Stop
+5. **Recent tests**
 
----
-
-## Test run page
-
-Open a run from history (`/tests/{runId}`):
-
-- Request method, URL, load config, status
-- Live snapshot while running
-- Full report when ready
-- **Download PDF**
-
-You can **stop** a running test from the run controls.
+Company members share the same test list and quota. Copy in the UI says **Team tests** instead of **Your tests**.
 
 ---
 
-## Profile
+## Account
 
-**Profile** shows your name, email, whether email is verified, and whether the active workspace is personal or company.
+**Account** (`/account`) replaces older Profile / Settings screens.
 
----
+| Block | Content |
+|---|---|
+| Profile | Name, email, verified badge, personal vs company, role |
+| Email | Resend verification if unverified (link valid **24 hours**) |
+| Workspace | Rename a **personal** workspace; **Upgrade to a company** |
+| Password | **Change password** → `/auth/change` |
+| Sessions | Signed-in devices (`#sessions`) |
 
-## Settings
-
-### Personal workspace name
-
-If you are still on a personal workspace, Settings shows the workspace name. Owner/admin can **rename** it. Company owners and admins rename from the Organization page instead.
-
-### Upgrade to company
-
-Personal **Owner** sees **Upgrade to company**. That flow is documented in [Workspaces and company upgrade](./organisation-management).
+Company owners and admins rename the workspace from **Organization**, not Account.
 
 ### Password
 
-**Change password** goes to `/auth/change`. You must enter the current password and a new one. Changing password signs out **all** sessions. Google-only accounts can keep using Google; they can still set a password later if the product offers it.
+**Change password** requires the current password and a new one. Changing password signs out **all** sessions. Google-only accounts that never set a password cannot use this until a password exists.
 
-Forgot password: [app.loadcurl.com/auth/forgot](https://app.loadcurl.com/auth/forgot) sends a reset email.
-
-### Email verification
-
-If your inbox is not verified, resend the verification email from Settings. The link is valid for 24 hours.
+Forgot password: [app.loadcurl.com/auth/forgot](https://app.loadcurl.com/auth/forgot) sends a reset email. The reset link is valid for **15 minutes**. Successful reset also signs out every session.
 
 ### Sessions
 
-Settings → **Sessions** lists devices signed in to your account:
+Account → **Sessions** lists devices signed in to your account:
 
 - Device name (or browser · device type)
 - **This device** badge for the current browser
@@ -87,18 +77,37 @@ Settings → **Sessions** lists devices signed in to your account:
 - **Sign out** on a single session
 - **Log out other devices** — keeps this browser signed in and revokes the rest
 
-Each sign-in stores a device id in the browser (`app_device_id` in local storage) so refresh and session revoke can tell devices apart. New device logins can also trigger a **new session** email with approximate location from IP.
+Each sign-in stores a device id in the browser (`app_device_id` in local storage) so refresh and session revoke can tell devices apart. A **new device** sign-in can also create an inbox notification (and email) with approximate location from IP.
 
 ---
 
-## Wallet
+## Notifications
 
-**Wallet** shows credits for the active workspace.
+The bell opens an inbox. **Mark all as read** is available. Typical events:
 
-- Personal: credits stay in that workspace.
-- Company: the team shares one credit pool. **Members** can view balance; **Owner** and **Admin** see plan comparison.
+| Event | Typical destination |
+|---|---|
+| New device signed in | Account → Sessions |
+| Plan quota ending soon | Plan (`/billing?renew=1`) |
+| Member joined / left / removed | Organization |
+| Test started | Tests (other members) |
+| Support reply / resolved / closed | That ticket |
 
-Plans listed in Wallet (Free, Starter, Growth, Scale) describe request volume, RPS, duration, history, and team size. Live test execution currently enforces duration **30–120 seconds** and up to **10,000 RPS**, with a per-workspace test cap.
+Inbox rows are separate from the **run timeline** on a test page.
+
+---
+
+## Support
+
+**Support** (`/support`) is in-app tickets, not only email.
+
+1. **New ticket** — category (**Payment related**, **Test fail**, **Other**), subject, body
+2. Open a ticket to reply
+3. Close a ticket when you are done (closed tickets cannot take new replies — open a new one)
+
+Statuses: Open, In progress, Waiting on you, Resolved, Closed.
+
+You can also email [hello@loadcurl.io](mailto:hello@loadcurl.io).
 
 ---
 
@@ -114,10 +123,10 @@ Plans listed in Wallet (Free, Starter, Growth, Scale) describe request volume, R
 | Change password | `/auth/change` |
 | Accept invite | `/organization/invite/accept?token=…` |
 
-The dashboard keeps your **access token in memory** and a **refresh token in an HttpOnly cookie**. Closing the tab clears the access token; the cookie is used to restore the session when you return.
+The dashboard keeps your **access token in memory** (about **15 minutes**) and a **refresh token in an HttpOnly cookie** (about **30 days**). Closing the tab clears the access token; the cookie is used to restore the session when you return.
 
 ---
 
 ## Next step
 
-Invite a team with [**Workspaces and company upgrade**](./organisation-management).
+Invite a team with [**Workspaces and company upgrade**](./organisation-management), or manage quota in [**Plan and usage**](./billing).

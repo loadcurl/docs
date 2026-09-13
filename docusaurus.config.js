@@ -7,6 +7,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import {FOOTER_LINKS, LINKS, NAVBAR_ITEMS, SITE} from './src/constants/links.js';
 
+
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 /** @type {import('@docusaurus/types').Config} */
@@ -75,12 +76,12 @@ const config = {
       },
       footer: {
         style: 'dark',
+        // Product, Community, and Legal columns — docs live in the sidebar.
         links: FOOTER_LINKS,
         logo: {
           alt: `${SITE.name} logo`,
           src: 'public/lightLogo.png',
           href: LINKS.website,
-          width: 100,
         },
         copyright: `Copyright © ${new Date().getFullYear()} ${SITE.legalName}. All rights reserved.`,
       },
