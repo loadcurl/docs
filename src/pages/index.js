@@ -1,10 +1,9 @@
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import LinkIcon from '@site/src/components/LinkIcon';
-import {LINKS} from '@site/src/constants/links';
+import {LINKS, SITE} from '@site/src/constants/links';
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
@@ -93,7 +92,6 @@ const STATS = [
 ];
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
   return (
     <header className={styles.hero}>
       <div className="container">
@@ -101,9 +99,9 @@ function HomepageHeader() {
           <div className={styles.heroContent}>
             <span className={styles.heroBadge}>Documentation</span>
             <Heading as="h1" className={styles.heroTitle}>
-              {siteConfig.title}
+              {SITE.name}
             </Heading>
-            <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
+            <p className={styles.heroSubtitle}>{SITE.tagline}</p>
             <div className={styles.heroActions}>
               <Link
                 className={clsx('button button--lg', styles.ctaPrimary)}
@@ -167,9 +165,11 @@ function HomepageHeader() {
 }
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
   return (
-    <Layout title={siteConfig.title} description="loadcurl documentation">
+    <Layout
+      title="HTTP Load Testing Guides"
+      description={SITE.description}
+      image={SITE.ogImage}>
       <HomepageHeader />
       <main>
         <HomepageFeatures />

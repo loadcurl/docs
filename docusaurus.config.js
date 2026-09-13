@@ -12,9 +12,10 @@ import {FOOTER_LINKS, LINKS, NAVBAR_ITEMS, SITE} from './src/constants/links.js'
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: SITE.name,
+  title: SITE.title,
   tagline: SITE.tagline,
   favicon: 'public/darkLogo.png',
+  titleDelimiter: '|',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -42,6 +43,32 @@ const config = {
     locales: ['en'],
   },
 
+  // Extra head tags for social previews (OG / Twitter). Per-page title &
+  // description still come from Layout / markdown front matter.
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        property: 'og:site_name',
+        content: SITE.name,
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        property: 'og:type',
+        content: 'website',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'application-name',
+        content: SITE.applicationName,
+      },
+    },
+  ],
+
   presets: [
     [
       'classic',
@@ -61,7 +88,12 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'public/lightLogo.png',
+      image: SITE.ogImage,
+      metadata: [
+        {name: 'description', content: SITE.description},
+        {name: 'keywords', content: SITE.keywords},
+        {name: 'twitter:card', content: 'summary_large_image'},
+      ],
       colorMode: {
         respectPrefersColorScheme: true,
       },

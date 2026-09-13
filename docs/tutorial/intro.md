@@ -45,8 +45,10 @@ Loadcurl is built so a single engineer can answer those questions from the dashb
 | An API endpoint to test | Use a system you own or have permission to test. Staging is safer than production. |
 | Basic HTTP knowledge | Methods, headers, query params, and JSON bodies |
 
-:::tip Current plan limits
+:::tip[Current plan limits]
+
 Each workspace starts on a **Free** plan with a monthly **request quota**. Duration and target RPS are capped by that plan. Open **Plan** in the dashboard for live numbers — they can change by market (US or India).
+
 :::
 
 ---

@@ -21,14 +21,23 @@
   border-radius: var(--loadcurl-radius-xl);
   box-shadow: var(--loadcurl-shadow-lg);
   display: grid;
-  gap: 2rem;
+  gap: 1.5rem;
   overflow: hidden;
-  padding: 2rem;
+  padding: 1.25rem;
+  width: 100%;
+}
+
+@media screen and (min-width: 640px) {
+  .heroCard {
+    gap: 1.75rem;
+    padding: 1.75rem;
+  }
 }
 
 @media screen and (min-width: 997px) {
   .heroCard {
     align-items: stretch;
+    gap: 2rem;
     grid-template-columns: 1fr 280px;
     padding: 2.5rem 2.75rem;
   }
@@ -81,26 +90,47 @@
 
 .heroTitle {
   color: var(--loadcurl-heading);
-  font-size: var(--loadcurl-text-4xl);
+  font-size: var(--loadcurl-text-3xl);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.15;
   margin: 0;
 }
 
+@media screen and (min-width: 997px) {
+  .heroTitle {
+    font-size: var(--loadcurl-text-4xl);
+  }
+}
+
 .heroSubtitle {
   color: var(--loadcurl-muted-foreground);
-  font-size: var(--loadcurl-text-md);
+  font-size: var(--loadcurl-text-sm);
   line-height: 1.6;
   margin: 0;
   max-width: 34rem;
 }
 
+@media screen and (min-width: 997px) {
+  .heroSubtitle {
+    font-size: var(--loadcurl-text-md);
+  }
+}
+
 .heroActions {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 0.75rem;
   margin-top: 0.75rem;
+  width: 100%;
+}
+
+@media screen and (min-width: 640px) {
+  .heroActions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
+  }
 }
 
 .ctaPrimary,
@@ -115,6 +145,14 @@
   padding: 0 1.25rem !important;
   transition: transform 0.2s ease, background-color 0.2s ease,
     border-color 0.2s ease, box-shadow 0.2s ease !important;
+  width: 100%;
+}
+
+@media screen and (min-width: 640px) {
+  .ctaPrimary,
+  .ctaSecondary {
+    width: auto;
+  }
 }
 
 .ctaPrimary {
@@ -173,10 +211,17 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 200px;
-  padding: 1.5rem;
+  min-height: 9rem;
+  padding: 1.25rem;
   position: relative;
   text-align: center;
+}
+
+@media screen and (min-width: 997px) {
+  .heroAccent {
+    min-height: 200px;
+    padding: 1.5rem;
+  }
 }
 
 .heroAccent::before {
