@@ -1,0 +1,110 @@
+.hero {
+  align-items: flex-start;
+  border-bottom: 1px solid var(--loadcurl-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 1.5rem;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.heroBrand {
+  align-items: flex-start;
+  display: flex;
+  flex: 1 1 18rem;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.heroLogo {
+  background: var(--loadcurl-card);
+  border: 1px solid var(--loadcurl-border);
+  border-radius: 1rem;
+  box-shadow: var(--loadcurl-shadow);
+  flex-shrink: 0;
+  height: 3.5rem;
+  object-fit: contain;
+  padding: 0.4rem;
+  width: 3.5rem;
+}
+
+.heroCopy {
+  min-width: 0;
+}
+
+.heroEyebrow {
+  color: var(--loadcurl-accent-foreground);
+  font-size: var(--loadcurl-text-2xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.35rem;
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  color: var(--loadcurl-heading);
+  font-size: var(--loadcurl-text-3xl);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0 0 0.45rem;
+}
+
+.heroDescription {
+  color: var(--loadcurl-muted-foreground);
+  font-size: var(--loadcurl-text-sm);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 36rem;
+}
+
+.heroActions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.heroCta {
+  min-height: 2.5rem;
+}
+
+.heroSecondary {
+  align-items: center;
+  border: 1px solid var(--loadcurl-border);
+  border-radius: 0.75rem;
+  color: var(--loadcurl-heading);
+  display: inline-flex;
+  font-size: var(--loadcurl-text-sm);
+  font-weight: 600;
+  gap: 0.4rem;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.9rem;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.heroSecondary:hover {
+  background: var(--loadcurl-muted);
+  border-color: var(--loadcurl-border);
+  color: var(--loadcurl-heading);
+  text-decoration: none;
+}
+
+.heroSecondaryIcon {
+  height: 1rem !important;
+  opacity: 0.8;
+  width: 1rem !important;
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 640px) {
+  .heroTitle {
+    font-size: var(--loadcurl-text-2xl);
+  }
+}

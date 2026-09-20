@@ -77,7 +77,24 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
         },
-        blog: false,
+        blog: {
+          showReadingTime: true,
+          blogTitle: 'Loadcurl Blog',
+          blogDescription:
+            'API load testing guides — RPS, latency percentiles, curl workflows, and cloud load testing.',
+          postsPerPage: 6,
+          blogSidebarTitle: 'Recent posts',
+          blogSidebarCount: 8,
+          feedOptions: {
+            type: ['rss', 'atom'],
+            title: 'Loadcurl Blog',
+            description:
+              'Practical guides on API load testing from the Loadcurl team.',
+          },
+          onInlineTags: 'warn',
+          onInlineAuthors: 'warn',
+          onUntruncatedBlogPosts: 'warn',
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -96,6 +113,15 @@ const config = {
       ],
       colorMode: {
         respectPrefersColorScheme: true,
+      },
+      // Built-in DocSearch (default Docusaurus Algolia search bar)
+      algolia: {
+        appId: '2RV1OQ8291',
+        // Search-only key — safe to commit
+        apiKey: 'ff2fbed27c3bdc4eab77dd49e7457604',
+        indexName: 'docs_loadcurl_com_2rv1oq8291_pages',
+        contextualSearch: true,
+        searchPagePath: 'search',
       },
       navbar: {
         title: SITE.name,

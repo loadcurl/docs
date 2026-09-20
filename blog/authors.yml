@@ -1,0 +1,9 @@
+loadcurl:
+  name: Loadcurl
+  title: Loadcurl Team
+  url: https://loadcurl.com
+  image_url: /public/darkLogo.png
+  page: true
+  socials:
+    x: loadcurl
+    github: loadcurl

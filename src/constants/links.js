@@ -74,6 +74,7 @@ export const LINK_LABELS = {
   workspace: 'Workspace',
   plan: 'Plan',
   faq: 'FAQ',
+  blog: 'Blog',
   discord: 'Discord',
   twitter: 'Twitter',
 };
@@ -120,6 +121,11 @@ export const NAVBAR_ITEMS = [
     activeBaseRegex: '/docs/tutorial/faq/?$',
   },
   {
+    to: '/blog',
+    label: LINK_LABELS.blog,
+    position: 'left',
+  },
+  {
     href: LINKS.website,
     label: LINK_LABELS.website,
     icon: LINK_ICONS.world,
@@ -153,6 +159,11 @@ export const FOOTER_LINKS = [
         label: LINK_LABELS.dashboard,
         href: LINKS.dashboard,
         icon: LINK_ICONS.dashboard,
+      },
+      {
+        label: LINK_LABELS.blog,
+        to: '/blog',
+        icon: LINK_ICONS.book,
       },
     ],
   },

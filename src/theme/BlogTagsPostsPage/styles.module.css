@@ -1,0 +1,40 @@
+.header {
+  border-bottom: 1px solid var(--loadcurl-border);
+  margin-bottom: 1.15rem;
+  padding-bottom: 1.15rem;
+}
+
+.eyebrow {
+  color: var(--loadcurl-accent-foreground);
+  font-size: var(--loadcurl-text-2xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.35rem;
+  text-transform: uppercase;
+}
+
+.title {
+  color: var(--loadcurl-heading);
+  font-size: var(--loadcurl-text-3xl);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0 0 0.4rem;
+}
+
+.summary {
+  color: var(--loadcurl-muted-foreground);
+  font-size: var(--loadcurl-text-sm);
+  margin: 0;
+}
+
+.description {
+  color: var(--loadcurl-foreground);
+  font-size: var(--loadcurl-text-sm);
+  margin: 0.65rem 0 0;
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+}
