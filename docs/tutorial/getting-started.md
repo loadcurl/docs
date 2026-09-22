@@ -37,7 +37,7 @@ A test can only target a hostname that is **verified** for your workspace (the h
 
 Personal workspaces can verify **1** domain. Company workspaces can verify up to **10**. Challenges expire after **7 days** — add the domain again if the token expired.
 
-Full steps: [**Verify a domain**](./domains).
+Full steps: [**Verify a domain**](./domains.md).
 
 If you skip this, **Start test** is blocked until a matching host is verified.
 
@@ -146,13 +146,13 @@ When the test finishes:
 2. Open the run to see request details, **request hold** (reserved / consumed / returned), and the **report**.
 3. Download a **PDF** of the report from the run page.
 
-Learn how to read the numbers in [**Reading test reports**](./report-card).
+Learn how to read the numbers in [**Reading test reports**](./report-card.md).
 
 ---
 
 ## What's next?
 
-- [**Verify a domain**](./domains) — DNS TXT and HTTP file challenges
-- [**Dashboard and account**](./dashboard) — nav, Account, sessions, Support
-- [**Workspaces and company upgrade**](./organisation-management) — invite teammates
-- [**Plan and usage**](./billing) — quota, checkout, holds
+- [**Verify a domain**](./domains.md) — DNS TXT and HTTP file challenges
+- [**Dashboard and account**](./dashboard.md) — nav, Account, sessions, Support
+- [**Workspaces and company upgrade**](./organisation-management.md) — invite teammates
+- [**Plan and usage**](./billing.md) — quota, checkout, holds

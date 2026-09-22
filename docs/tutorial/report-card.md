@@ -115,10 +115,10 @@ Starting a test **holds** `duration × RPS` requests (minimum 1) from this perio
 - When the report is ready, actual hits are **consumed** and unused hold is **returned**.
 - If you stop the test or it fails before a report, the hold is **released**.
 
-See [**Plan and usage**](./billing).
+See [**Plan and usage**](./billing.md).
 
 ---
 
 ## Next step
 
-See [**Dashboard and account**](./dashboard) for navigation, sessions, and Support.
+See [**Dashboard and account**](./dashboard.md) for navigation, sessions, and Support.

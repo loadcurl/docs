@@ -87,4 +87,4 @@ Verification proves you control the host. It does not mean production is a good 
 
 ## Next step
 
-With a verified host, continue to [**Getting Started**](./getting-started) to compose a request, or [**Reading test reports**](./report-card) after you run one.
+With a verified host, continue to [**Getting Started**](./getting-started.md) to compose a request, or [**Reading test reports**](./report-card.md) after you run one.

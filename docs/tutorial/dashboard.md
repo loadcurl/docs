@@ -25,7 +25,7 @@ After you sign in, everything happens in the [dashboard](https://app.loadcurl.co
 | Account | **Account** | `/account` | Profile, email, password, sessions, upgrade |
 | Help | **Support** | `/support` | Tickets |
 
-Personal accounts do not see the company **Organization** item. Upgrade first (see [Workspaces and company upgrade](./organisation-management)). **Domains** is available for both personal and company workspaces.
+Personal accounts do not see the company **Organization** item. Upgrade first (see [Workspaces and company upgrade](./organisation-management.md)). **Domains** is available for both personal and company workspaces.
 
 **New test** in the header opens `/tests/new` (hidden while you are already on Tests or New test).
 
@@ -129,4 +129,4 @@ The dashboard keeps your **access token in memory** (about **15 minutes**) and a
 
 ## Next step
 
-Invite a team with [**Workspaces and company upgrade**](./organisation-management), or manage quota in [**Plan and usage**](./billing).
+Invite a team with [**Workspaces and company upgrade**](./organisation-management.md), or manage quota in [**Plan and usage**](./billing.md).

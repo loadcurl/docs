@@ -35,7 +35,7 @@ Yes. Register without a credit card. A personal workspace is created on the **Fr
 3. Set target traffic, ramp-up, and duration.
 4. **Start test** (needs enough available quota).
 
-Details: [Getting Started](./getting-started).
+Details: [Getting Started](./getting-started.md).
 
 ### What HTTP methods are supported?
 
@@ -76,7 +76,7 @@ No. It polls about every 3 seconds for status, then for the report after the run
 
 ### Do I have to verify a domain?
 
-Yes. Tests may only target a verified hostname or a subdomain of one. Personal workspaces: **1** domain. Company: **10**. See [Verify a domain](./domains).
+Yes. Tests may only target a verified hostname or a subdomain of one. Personal workspaces: **1** domain. Company: **10**. See [Verify a domain](./domains.md).
 
 ---
 
@@ -88,7 +88,7 @@ No. Sign-up creates a personal workspace. Upgrade from **Account** when you want
 
 ### How do I upgrade individual to company?
 
-Account → **Upgrade to a company** → enter a name → confirm. One-way. See [Workspaces and company upgrade](./organisation-management).
+Account → **Upgrade to a company** → enter a name → confirm. One-way. See [Workspaces and company upgrade](./organisation-management.md).
 
 ### What roles exist?
 

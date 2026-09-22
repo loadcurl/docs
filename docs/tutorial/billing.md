@@ -102,4 +102,4 @@ The run page repeats hold state: Reserved / Consumed / Returned. That is the sam
 
 ## Next step
 
-See [**FAQ**](./faq) for billing, security, and product questions.
+See [**FAQ**](./faq.md) for billing, security, and product questions.

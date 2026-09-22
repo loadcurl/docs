@@ -83,4 +83,4 @@ Dashboard is an **overview** (quota, alerts, live and recent runs). You compose 
 
 ## Next step
 
-Ready to run your first test? Continue to [**Getting Started**](./getting-started).
+Ready to run your first test? Continue to [**Getting Started**](./getting-started.md).

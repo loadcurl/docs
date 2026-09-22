@@ -101,10 +101,10 @@ On **Organization**:
 
 ## Domains, tests, and quota
 
-Verified **domains**, **tests**, and **request quota** are scoped to the workspace. Company members share one pool. See [**Verify a domain**](./domains) and [**Plan and usage**](./billing).
+Verified **domains**, **tests**, and **request quota** are scoped to the workspace. Company members share one pool. See [**Verify a domain**](./domains.md) and [**Plan and usage**](./billing.md).
 
 ---
 
 ## Next step
 
-See [**Plan and usage**](./billing) for checkout and quota, or [**FAQ**](./faq) for limits and security questions.
+See [**Plan and usage**](./billing.md) for checkout and quota, or [**FAQ**](./faq.md) for limits and security questions.
