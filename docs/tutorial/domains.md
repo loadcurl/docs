@@ -3,14 +3,16 @@ id: domains
 title: Verify a domain
 sidebar_label: Domains
 sidebar_position: 3
-description: Prove ownership of a hostname before Loadcurl will send load-test traffic to it.
+description: Prove ownership of a hostname when a test goes above the free-plan limit.
 ---
 
 # Verify a domain
 
-Loadcurl only sends traffic to hosts your workspace has **verified**. That keeps tests from targeting arbitrary public URLs.
+A **verified email** is required before any test. A **verified domain** is required only when the test goes above the **free-plan limit** (`max_rps` and `max_test_duration`). Inside that limit the target domain does not have to be verified. Load above it is available after the domain is verified, on a plan that allows it. Open **Plan** for the current numbers.
 
-A test URL is allowed when its hostname **equals** a verified domain, or is a **subdomain** of one. For example, verifying `example.com` also covers `api.example.com`.
+Above that cap, Loadcurl only sends traffic to a hostname your workspace has **verified**, and only on a plan that allows the load. A test URL is then allowed when its hostname **equals** a verified domain, or is a **subdomain** of one. For example, verifying `example.com` also covers `api.example.com`.
+
+You may only test systems you own or have permission to test, whether or not the domain is verified.
 
 ---
 
@@ -87,4 +89,4 @@ Verification proves you control the host. It does not mean production is a good 
 
 ## Next step
 
-With a verified host, continue to [**Getting Started**](./getting-started.md) to compose a request, or [**Reading test reports**](./report-card.md) after you run one.
+Continue to [**Getting Started**](./getting-started.md) to compose a request inside the free cap, or [**Reading test reports**](./report-card.md) after you run one.

@@ -14,7 +14,7 @@ description: Answers about Loadcurl accounts, tests, domains, workspaces, report
 
 ### What is Loadcurl?
 
-Loadcurl is a cloud HTTP load testing product. You configure a request in the [dashboard](https://app.loadcurl.com), verify the host, set target RPS, ramp-up, and duration, and Loadcurl runs the traffic. You get live status (polled about every 3 seconds) and a detailed report (latency, throughput, HTTP outcomes) plus PDF export. Usage is gated by **request quota** on your plan.
+Loadcurl is a cloud HTTP load testing product. You configure a request in the [dashboard](https://app.loadcurl.com), set target RPS, ramp-up, and duration, and Loadcurl runs the traffic. The free plan includes a load cap with no credit card. Open **Plan** for the current numbers. You get live status (polled about every 3 seconds) and a detailed report (latency, throughput, HTTP outcomes) plus PDF export. Usage is gated by **request quota** on your plan.
 
 ### Do I need to install anything?
 
@@ -22,7 +22,7 @@ No. Use the web dashboard. There is no CLI or CI/CD integration in the current p
 
 ### Is there a free way to start?
 
-Yes. Register without a credit card. A personal workspace is created on the **Free** plan. See **Plan** in the app for live prices and limits (US or India).
+Yes. Register without a credit card. A personal workspace is created on the **Free** plan: each test stays inside the **free-plan limit** (`max_rps` and `max_test_duration`), and you can run **one active test** at a time. A verified email is required. The target domain does not have to be verified inside that limit. Load above it requires a verified domain and a plan that allows it. See **Plan** in the app for live prices and limits (US or India).
 
 ---
 
@@ -30,10 +30,10 @@ Yes. Register without a credit card. A personal workspace is created on the **Fr
 
 ### How do I run a test?
 
-1. Verify a domain (**Domains**).
+1. Verify your email.
 2. **New test** → method and URL (or paste curl / Postman).
-3. Set target traffic, ramp-up, and duration.
-4. **Start test** (needs enough available quota).
+3. Set target traffic, ramp-up, and duration. Stay inside the free-plan limit if the domain is not verified.
+4. **Start test** (needs enough available quota, and no other active test on Free).
 
 Details: [Getting Started](./getting-started.md).
 
@@ -49,14 +49,20 @@ Not in the current product. Each test is a single HTTP request repeated under th
 
 Common blockers:
 
-- No **verified domain** matching the URL host
+- Email is not **verified**
+- On the **free plan**, another test is still **pending, provisioned, or running** (HTTP 409: “The free plan allows one active test at a time. Wait for the current test to finish before starting another.”)
 - Not enough **available** requests (`duration × RPS`)
-- Duration or RPS above the **current plan** cap
+- Duration or RPS above the **current plan** cap (on Free, the free-plan limit)
+- Load above the free-plan limit without a **verified domain**
 - Workspace **test count** cap reached (currently **5**)
 
 ### Will this hit production?
 
 Yes if you enter a production URL. Traffic is real. Use staging when you are exploring. Only test systems you are allowed to test. Domain verification proves you control the host; it does not make production traffic safe.
+
+### Can the free plan run two tests at once?
+
+No. Pending, provisioned, and running all count as active. Starting another returns **409** and tells you to wait for the current test to finish. After it completes or fails, the next one can start. Paid plans are unchanged.
 
 ### Can I stop a test?
 
@@ -76,7 +82,7 @@ No. It polls about every 3 seconds for status, then for the report after the run
 
 ### Do I have to verify a domain?
 
-Yes. Tests may only target a verified hostname or a subdomain of one. Personal workspaces: **1** domain. Company: **10**. See [Verify a domain](./domains.md).
+Not to stay inside the **free-plan limit**. A verified email is enough for that cap. Going above it requires a verified hostname (or a subdomain of one) and a plan that allows the load. Personal workspaces: **1** domain. Company: **10**. See [Verify a domain](./domains.md).
 
 ---
 

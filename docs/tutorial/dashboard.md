@@ -37,7 +37,7 @@ The header also shows a **request quota chip** (Available / Held / Plan quota) t
 
 Dashboard is **not** the request builder. It is an overview:
 
-1. Alerts — verify a domain, last test failed, low quota, period ending soon
+1. Alerts — verify your email, verify a domain when you need load above the free-plan limit, last test failed, low quota, period ending soon
 2. Hero — first run prompt, or quota headline with **New test** / **Test history**
 3. Quota panel — links to **Usage** and **Plan**
 4. **Now** — live tests with Open / Stop

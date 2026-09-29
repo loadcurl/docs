@@ -22,7 +22,7 @@ Tests live under **Tests** in the sidebar. Compose on **New test** (`/tests/new`
 
 Running includes pending and provisioned as well as actively sending traffic.
 
-Each workspace has a **test count cap** (currently **5** scenarios). Remaining capacity also shows on the Dashboard.
+On the **free plan**, only one of those may be open at a time. Starting another while a test is pending, provisioned, or running returns **409** until that test completes or fails. Paid plans are unchanged. Each workspace also has a **test count cap** (currently **5** scenarios). Remaining capacity shows on the Dashboard.
 
 ---
 

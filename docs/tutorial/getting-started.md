@@ -3,12 +3,12 @@ id: getting-started
 title: Getting Started
 sidebar_label: Getting Started
 sidebar_position: 2
-description: Create your Loadcurl account, verify a domain, and run your first HTTP load test.
+description: Create your Loadcurl account, start a test inside the free-plan limit, and read the report.
 ---
 
 # Getting Started
 
-This page walks you through sign-up, domain verification, and running a load test from [app.loadcurl.com](https://app.loadcurl.com).
+This page walks you through sign-up and running a load test from [app.loadcurl.com](https://app.loadcurl.com). The free plan needs a verified email, not a credit card. A verified domain is required only when you go above the free-plan limit.
 
 ---
 
@@ -26,20 +26,22 @@ You land on the **Dashboard** — an overview of quota, alerts, live tests, and 
 
 ---
 
-## Step 2 — Verify a domain
+## Step 2 — Know the free-plan cap
 
-A test can only target a hostname that is **verified** for your workspace (the host itself, or a subdomain of a verified apex).
+You can start a test without verifying the target domain while you stay inside the free plan:
 
-1. Open **Domains** in the sidebar (`/organization/domains`).
-2. Click **Add domain** and enter the hostname (for example `api.example.com` or `example.com`).
-3. Choose **DNS TXT** (preferred) or **HTTP file**, then add the challenge your DNS or site.
-4. Click **Verify**. Status becomes **Verified**.
+| Limit | Free plan |
+|---|---|
+| Max RPS | Free-plan `max_rps` — see **Plan** |
+| Max duration | Free-plan `max_test_duration` — see **Plan** |
+| Active tests | **1** — pending, provisioned, and running all count |
+| Credit card | Not required |
+| Verified email | Required |
+| Verified domain | Not required inside the cap above |
 
-Personal workspaces can verify **1** domain. Company workspaces can verify up to **10**. Challenges expire after **7 days** — add the domain again if the token expired.
+Creating a test enforces the RPS and duration caps. Going **above the free-plan limit** requires a **verified domain** and a **plan that allows** that load. Paid plans are otherwise unchanged — they are not limited to one active test.
 
-Full steps: [**Verify a domain**](./domains.md).
-
-If you skip this, **Start test** is blocked until a matching host is verified.
+To verify a host when you need the higher cap, open **Domains**, add the hostname, and complete DNS TXT or HTTP file. Personal workspaces can verify **1** domain. Company workspaces can verify up to **10**. Full steps: [**Verify a domain**](./domains.md).
 
 ---
 
@@ -75,7 +77,7 @@ Line breaks with `\` are supported. OpenAPI import is not available.
 
 1. Optionally set a **scenario name** (otherwise a title is generated from the URL).
 2. Choose an **HTTP method**: GET, POST, PUT, PATCH, or DELETE.
-3. Enter a URL whose host matches a verified domain.
+3. Enter the URL. Inside the free-plan limit the host does not have to be verified. Above that, the host must match a verified domain (or a subdomain of one).
 4. Use the tabs:
 
 | Tab | Use it for |
@@ -116,7 +118,7 @@ In **Load configuration**:
 | **Ramp-up time** | Seconds to reach target RPS (`0` = immediate) | `0` |
 | **Test duration** | Total run length | `30` seconds |
 
-Defaults in the form are **30s** duration, **0** ramp-up, **1** RPS. Max duration and max RPS come from your **current plan**. The preview shows estimated total requests and **Reserved from quota: duration × RPS** (minimum 1).
+Defaults in the form are **30s** duration, **0** ramp-up, **1** RPS. Max duration and max RPS come from your **current plan**. On Free that ceiling is the **free-plan limit**. An unverified hostname cannot go above that same ceiling, even on a higher plan. Load above it is available after domain verification, on a plan that allows it. The preview shows estimated total requests and **Reserved from quota: duration × RPS** (minimum 1).
 
 Start small on staging, then increase RPS once you have a baseline.
 
@@ -125,6 +127,12 @@ Start small on staging, then increase RPS once you have a baseline.
 ## Step 6 — Start the test
 
 Click **Start test**. The workspace must have enough **available** requests (`duration × RPS`). If quota is short, start is blocked — open **Plan** to recharge or upgrade.
+
+On the **free plan**, the organization can have only one active test. Pending, provisioned, and running all count. Starting another while one of those is still open returns **409**:
+
+> The free plan allows one active test at a time. Wait for the current test to finish before starting another.
+
+After the test **completes or fails**, the next one can start. Paid plans are unchanged.
 
 The run is created, a **hold** is placed on that quota, and you are taken to `/tests/{runId}`.
 

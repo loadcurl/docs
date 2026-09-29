@@ -46,12 +46,22 @@ Typical catalog (confirm live numbers on **Plan**):
 
 | Plan | What it is for |
 |---|---|
-| **Free** | Start without a card. Lower monthly requests, RPS, and duration. |
+| **Free** | Start without a card. Each test stays inside the **free-plan limit** (`max_rps`, `max_test_duration`). **One active test** at a time. |
 | **Starter** | Paid monthly quota and higher load caps |
 | **Growth** | Larger quota (often marked popular) |
 | **Scale** | Highest published caps |
 
-Each plan publishes features such as requests / month, max RPS, and max test duration. Duration and RPS on **New test** cannot exceed the **current** plan.
+Each plan publishes features such as requests / month, max RPS, and max test duration. Duration and RPS on **New test** cannot exceed the **current** plan. Creating a test enforces those features.
+
+On **Free**:
+
+- No credit card. A verified email is required.
+- Each test is capped at the **free-plan limit**. Open **Plan** for the current numbers.
+- The target domain does **not** have to be verified to stay inside that limit.
+- Going above the free-plan limit requires a **verified domain** and a plan that allows it.
+- Only **one** test may be active. Pending, provisioned, and running all count. Starting another returns **409**: “The free plan allows one active test at a time. Wait for the current test to finish before starting another.”
+- After the test completes or fails, the next one can start.
+- **Paid plans are unchanged** — they are not limited to one active test.
 
 Free is provisioned automatically when the workspace is created. You cannot “buy” Free.
 
