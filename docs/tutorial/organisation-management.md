@@ -74,6 +74,7 @@ Rules:
 | Upgrade | No | No | Yes (from personal) |
 | Plan checkout | No | Yes | Yes |
 | Manage domains | View only | Yes | Yes |
+| Manage MCP keys | No | Yes | Yes |
 | Leave | Yes | Yes | No — transfer first |
 
 - You cannot change your own role.
@@ -105,6 +106,12 @@ Verified **domains**, **tests**, and **request quota** are scoped to the workspa
 
 ---
 
+## MCP keys
+
+Owner and Admin can create keys so an MCP client can run tests for this workspace. The key acts as the member who created it. If that person leaves, the key stops working. Open **MCP keys**, or read [**MCP keys**](./mcp.md).
+
+---
+
 ## Next step
 
-See [**Plan and usage**](./billing.md) for checkout and quota, or [**FAQ**](./faq.md) for limits and security questions.
+See [**MCP keys**](./mcp.md) to connect a client, [**Plan and usage**](./billing.md) for checkout and quota, or [**FAQ**](./faq.md) for limits and security questions.

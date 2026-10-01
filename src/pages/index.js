@@ -67,7 +67,7 @@ const StatIcons = {
 const STATS = [
   {
     title: 'Guides',
-    detail: 'Tests, domains, and plan',
+    detail: 'Tests, domains, MCP, and plan',
     to: LINKS.docsIntro,
     icon: 'book',
   },

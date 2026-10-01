@@ -10,7 +10,7 @@ description: Learn what Loadcurl is, how the free plan works, and how to run you
 
 **Loadcurl** is an HTTP load testing platform. You sign in at [app.loadcurl.com](https://app.loadcurl.com), verify your email, compose a request (or paste a curl / Postman snippet), set duration, ramp-up, and target traffic, then start a run. The free plan needs no credit card. Each test stays inside the **free-plan limit**. Load above that limit is available after you **verify a domain** and your plan allows it. Open **Plan** for the current numbers. Cloud workers hit that endpoint while the run page polls live status. When the run finishes you get a report — latency percentiles, throughput vs target RPS, HTTP outcomes — and you can download it as a PDF.
 
-No CLI, workers, or extra infrastructure is required. Everything runs from the web dashboard.
+No CLI, workers, or extra infrastructure is required for the dashboard. You can also connect an MCP client with a key from **MCP keys** — see [MCP keys](./mcp.md).
 
 ## Why load test your API?
 
@@ -68,6 +68,7 @@ Each workspace starts on **Free**. Every free-plan test is capped by the plan’
 | **Request quota** | Monthly allotment on the current plan: **allotted**, **available**, **held**, and **used**. Starting a test holds `duration × RPS` until the run settles. |
 | **Plan vs Usage** | **Plan** is billing and checkout. **Usage** is the quota bar, holds, and ledger. |
 | **Report** | Latency (p50–p99), throughput vs target, HTTP status mix, and success / failure rates for a completed run. |
+| **MCP key** | A credential Owner or Admin creates so an MCP client can run, poll, stop, and report on tests for this workspace. The secret is shown once. |
 
 You belong to **one active organization** at a time. Roles in a company are **Owner**, **Admin**, and **Member**.
 

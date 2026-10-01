@@ -19,7 +19,7 @@ const sidebars = {
       type: 'category',
       label: 'Workspace',
       collapsible: false,
-      items: ['tutorial/organisation-management'],
+      items: ['tutorial/organisation-management', 'tutorial/mcp'],
     },
     {
       type: 'category',

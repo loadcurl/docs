@@ -20,12 +20,13 @@ After you sign in, everything happens in the [dashboard](https://app.loadcurl.co
 | Testing | **Tests** | `/tests` | History, filters, KPIs |
 | Workspace | **\{org name\}** | `/organization` | Company only — members, invites, leave |
 | Workspace | **Domains** | `/organization/domains` | Verify hosts you will load-test |
+| Workspace | **MCP keys** | `/organization/mcp-keys` | Keys for MCP clients (Owner and Admin) |
 | Billing | **Plan** | `/billing` | Current plan, comparison, Razorpay checkout |
 | Billing | **Usage** | `/wallet` | Request quota, holds, ledger |
 | Account | **Account** | `/account` | Profile, email, password, sessions, upgrade |
 | Help | **Support** | `/support` | Tickets |
 
-Personal accounts do not see the company **Organization** item. Upgrade first (see [Workspaces and company upgrade](./organisation-management.md)). **Domains** is available for both personal and company workspaces.
+Personal accounts do not see the company **Organization** item. Upgrade first (see [Workspaces and company upgrade](./organisation-management.md)). **Domains** and **MCP keys** are available for both personal and company workspaces. MCP keys are limited to Owner and Admin. See [MCP keys](./mcp.md).
 
 **New test** in the header opens `/tests/new` (hidden while you are already on Tests or New test).
 

@@ -164,3 +164,4 @@ Learn how to read the numbers in [**Reading test reports**](./report-card.md).
 - [**Dashboard and account**](./dashboard.md) — nav, Account, sessions, Support
 - [**Workspaces and company upgrade**](./organisation-management.md) — invite teammates
 - [**Plan and usage**](./billing.md) — quota, checkout, holds
+- [**MCP keys**](./mcp.md) — run the same test from Claude or another MCP client

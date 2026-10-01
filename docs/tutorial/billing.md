@@ -2,7 +2,7 @@
 id: billing
 title: Plan and usage
 sidebar_label: Plan & usage
-sidebar_position: 7
+sidebar_position: 8
 description: Request quota, plan checkout with Razorpay, holds, and the usage ledger in Loadcurl.
 ---
 

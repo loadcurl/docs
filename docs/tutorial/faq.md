@@ -2,8 +2,8 @@
 id: faq
 title: Frequently Asked Questions
 sidebar_label: FAQ
-sidebar_position: 8
-description: Answers about Loadcurl accounts, tests, domains, workspaces, reports, billing, and security.
+sidebar_position: 9
+description: Answers about Loadcurl accounts, tests, domains, workspaces, MCP keys, reports, billing, and security.
 ---
 
 # Frequently Asked Questions
@@ -18,7 +18,7 @@ Loadcurl is a cloud HTTP load testing product. You configure a request in the [d
 
 ### Do I need to install anything?
 
-No. Use the web dashboard. There is no CLI or CI/CD integration in the current product.
+No, for the dashboard. Load generators run in the cloud. You can also connect an MCP client, such as Claude, with a key from **MCP keys**. That client calls Loadcurl’s `/mcp` endpoint. There is no Loadcurl CLI to install. See [MCP keys](./mcp.md).
 
 ### Is there a free way to start?
 
@@ -39,7 +39,7 @@ Details: [Getting Started](./getting-started.md).
 
 ### What HTTP methods are supported?
 
-GET, POST, PUT, PATCH, DELETE in the dashboard. Body must be a JSON object when used (POST, PUT, PATCH).
+GET, POST, PUT, PATCH, and DELETE in the dashboard. An MCP `run_test` call also accepts HEAD and OPTIONS. Body must be a JSON object when used.
 
 ### Can I chain multiple endpoints in one scenario?
 
@@ -123,6 +123,26 @@ An HttpOnly **refresh_token** cookie keeps you signed in. The access token stays
 ### Does Loadcurl support Google sign-in?
 
 Yes, on the login and register screens.
+
+---
+
+## MCP
+
+### Can an agent run a load test?
+
+Yes. Owner or Admin creates a key on **MCP keys**, then connects a client with the URL and credentials shown once at creation. The client can start a test, poll status, read the report, list tests, stop a live test, and read plan limits. The same quota, domain, and plan rules apply. Details: [MCP keys](./mcp.md).
+
+### What if my MCP client cannot set custom headers?
+
+Put the keys on the URL instead: `https://<api-origin>/mcp?access_key=lcak_…&secret_key=lcsk_…`. The create dialog copies this connector link. Claude uses it under **Settings → Connectors → Add custom connector**. The link is the secret. Clients that can set headers should use `X-Access-Key` and `X-Secret-Key` instead.
+
+### Who can create MCP keys?
+
+Organization **owners** and **admins**, including the owner of a personal workspace. Your email must be verified. Members cannot create or list keys.
+
+### What if I lose the secret?
+
+It cannot be shown again. Revoke the key and create a new one. An organization can keep 20 keys that are not revoked. Expired keys count until they are revoked.
 
 ---
 

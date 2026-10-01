@@ -61,7 +61,7 @@ const FeatureList = [
     title: 'Built for the dashboard',
     icon: 'integrate',
     description:
-      'Guides for New test, live run polling, PDF reports, Account, and upgrading a personal workspace to a company.',
+      'Guides for New test, live run polling, PDF reports, MCP keys, Account, and upgrading a personal workspace to a company.',
   },
 ];
 

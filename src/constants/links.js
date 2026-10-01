@@ -106,7 +106,7 @@ export const NAVBAR_ITEMS = [
     to: DOCS.workspace,
     label: LINK_LABELS.workspace,
     position: 'left',
-    activeBaseRegex: '/docs/tutorial/organisation-management/?$',
+    activeBaseRegex: '/docs/tutorial/(organisation-management|mcp)/?$',
   },
   {
     to: DOCS.plan,
