@@ -50,7 +50,7 @@
   --loadcurl-icon-md: 1.25rem;
   --loadcurl-icon-lg: 1.5rem;
 
-  --loadcurl-size-logo: 2.5rem;
+  --loadcurl-size-logo: 1.5rem;
   --loadcurl-size-icon-box: 2.5rem;
   --loadcurl-size-control: 2.5rem;
 
@@ -200,13 +200,18 @@ html {
 /* ------------------------------------------------------------------ */
 
 .navbar {
+  align-items: center;
   background: var(--ifm-navbar-background-color);
   border-bottom: 1px solid var(--loadcurl-border);
   box-shadow: var(--ifm-navbar-shadow);
+  height: var(--ifm-navbar-height);
+  padding-block: 0;
 }
 
 .navbar__inner {
-  min-height: var(--ifm-navbar-height);
+  align-items: center;
+  height: 100%;
+  min-height: 0;
 }
 
 .navbar__brand {
@@ -220,22 +225,25 @@ html {
   min-width: 0;
 }
 
+.navbar__title {
+  display: none;
+}
+
 .navbar__logo {
   flex-shrink: 0;
   height: var(--loadcurl-size-logo);
   margin-right: 0;
-  overflow: hidden;
-  width: var(--loadcurl-size-logo);
+  overflow: visible;
+  width: auto;
 }
 
 .navbar__logo img {
   display: block;
-  height: 100%;
+  height: var(--loadcurl-size-logo);
   margin: 0;
-  object-fit: cover;
-  object-position: center;
-  transform: scale(1.25);
-  width: 100%;
+  object-fit: contain;
+  object-position: left center;
+  width: auto;
 }
 
 .navbar__title {
@@ -252,12 +260,15 @@ html {
 }
 
 .navbar__items {
+  align-items: center;
   gap: 0.15rem;
+  height: 100%;
 }
 
 .navbar__items--right {
   align-items: center;
   gap: 0.15rem;
+  height: 100%;
 }
 
 .navbar__link {
@@ -273,9 +284,20 @@ html {
 
 /* Desktop only — do not override Infima's mobile .navbar__item { display: none } */
 @media (min-width: 997px) {
+  .navbar__item {
+    align-items: center;
+    display: flex;
+    padding-block: 0;
+  }
+
   .navbar__item.navbar__link {
     display: inline-flex;
   }
+}
+
+.navbar .DocSearch-Button {
+  align-items: center;
+  margin: 0;
 }
 
 .navbar__link:hover {
@@ -288,6 +310,7 @@ html {
   background: var(--loadcurl-accent);
   color: var(--loadcurl-accent-foreground);
   font-weight: 600;
+  padding-block: 1px;
 }
 
 [data-theme='dark'] .navbar__link--active {
@@ -1184,9 +1207,10 @@ table th {
     margin-right: 0;
   }
 
-  .navbar__logo {
-    height: 2rem;
-    width: 2rem;
+  .navbar__logo,
+  .navbar__logo img {
+    height: 1.35rem;
+    width: auto;
   }
 
   /* Keep theme toggle visible on mobile (Docusaurus hides it by default) */

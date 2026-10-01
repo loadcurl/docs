@@ -18,7 +18,7 @@ import {
 const config = {
   title: SITE.title,
   tagline: SITE.tagline,
-  favicon: "public/darkLogo.png",
+  favicon: "public/icon-light.png",
   titleDelimiter: "|",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -135,11 +135,13 @@ const config = {
         searchPagePath: "search",
       },
       navbar: {
-        title: SITE.name,
+        title: "",
         logo: {
           alt: `${SITE.name} logo`,
-          src: "public/darkLogo.png",
-          srcDark: "public/lightLogo.png",
+          src: "public/logo-light.png",
+          srcDark: "public/logo-dark.png",
+          width: 135,
+          height: 24,
         },
         items: NAVBAR_ITEMS,
       },
@@ -149,8 +151,10 @@ const config = {
         links: FOOTER_LINKS,
         logo: {
           alt: `${SITE.name} logo`,
-          src: "public/lightLogo.png",
+          src: "public/logo-dark.png",
           href: LINKS.website,
+          width: 180,
+          height: 32,
         },
         copyright: `Copyright © ${new Date().getFullYear()} ${
           SITE.legalName

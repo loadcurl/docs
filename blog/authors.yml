@@ -2,7 +2,7 @@ loadcurl:
   name: Loadcurl
   title: Loadcurl Team
   url: https://loadcurl.com
-  image_url: /public/darkLogo.png
+  image_url: /public/icon-light.png
   page: true
   socials:
     x: loadcurl

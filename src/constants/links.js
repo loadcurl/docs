@@ -26,7 +26,7 @@ export const SITE = {
   organizationName: 'loadcurl',
   projectName: 'loadcurl',
   /** Default Open Graph / Twitter card image (under static/) */
-  ogImage: 'public/lightLogo.png',
+  ogImage: 'public/logo-light.png',
   keywords:
     'Loadcurl, load testing, HTTP load test, API testing, curl, Postman, RPS, documentation',
 };

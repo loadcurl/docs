@@ -89,17 +89,19 @@
 }
 
 .heroTitle {
-  color: var(--loadcurl-heading);
-  font-size: var(--loadcurl-text-3xl);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
+  line-height: 0;
   margin: 0;
 }
 
+.heroWordmark {
+  display: block;
+  height: 1.75rem;
+  width: auto;
+}
+
 @media screen and (min-width: 997px) {
-  .heroTitle {
-    font-size: var(--loadcurl-text-4xl);
+  .heroWordmark {
+    height: 2rem;
   }
 }
 

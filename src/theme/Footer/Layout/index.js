@@ -19,7 +19,6 @@ export default function FooterLayout({style, links, logo, copyright}) {
           <div className={styles.brand}>
             <div className={styles.brandIdentity}>
               {logo ? <div className={styles.brandLogo}>{logo}</div> : null}
-              <span className={styles.brandName}>{SITE.name}</span>
             </div>
             <p className={styles.brandTagline}>
               {SITE.footerTagline ?? siteConfig.tagline}

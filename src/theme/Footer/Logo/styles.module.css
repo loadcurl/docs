@@ -1,24 +1,23 @@
 .footerLogoLink {
   align-items: center;
   display: inline-flex;
-  height: var(--loadcurl-size-logo);
+  height: 2rem;
   line-height: 0;
   opacity: 1;
-  overflow: hidden;
+  overflow: visible;
   transition: opacity 0.15s ease;
-  width: var(--loadcurl-size-logo);
+  width: auto;
 }
 
 .footerLogoLink :global(.footer__logo) {
   display: block;
-  height: var(--loadcurl-size-logo);
+  height: 2rem;
   margin: 0;
-  max-height: var(--loadcurl-size-logo);
+  max-height: 2rem;
   max-width: none;
-  object-fit: cover;
-  object-position: center;
-  transform: scale(1.25);
-  width: var(--loadcurl-size-logo);
+  object-fit: contain;
+  object-position: left center;
+  width: auto;
 }
 
 .footerLogoLink:hover {

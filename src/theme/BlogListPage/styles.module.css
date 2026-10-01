@@ -25,8 +25,20 @@
   flex-shrink: 0;
   height: 3.5rem;
   object-fit: contain;
-  padding: 0.4rem;
+  padding: 0.45rem;
   width: 3.5rem;
+}
+
+.heroLogoDark {
+  display: none;
+}
+
+:global([data-theme='dark']) .heroLogo {
+  display: none;
+}
+
+:global([data-theme='dark']) .heroLogoDark {
+  display: block;
 }
 
 .heroCopy {

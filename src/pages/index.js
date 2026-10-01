@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
+import ThemedImage from '@theme/ThemedImage';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import LinkIcon from '@site/src/components/LinkIcon';
 import {LINKS, SITE} from '@site/src/constants/links';
@@ -99,7 +101,14 @@ function HomepageHeader() {
           <div className={styles.heroContent}>
             <span className={styles.heroBadge}>Documentation</span>
             <Heading as="h1" className={styles.heroTitle}>
-              {SITE.name}
+              <ThemedImage
+                alt={SITE.name}
+                className={styles.heroWordmark}
+                sources={{
+                  light: useBaseUrl('/public/wordmark-light.png'),
+                  dark: useBaseUrl('/public/wordmark-dark.png'),
+                }}
+              />
             </Heading>
             <p className={styles.heroSubtitle}>{SITE.tagline}</p>
             <div className={styles.heroActions}>

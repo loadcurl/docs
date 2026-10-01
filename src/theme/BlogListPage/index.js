@@ -34,12 +34,14 @@ function BlogListPageMetadata({metadata}) {
 }
 
 function BlogListHero({title, description}) {
-  const logo = useBaseUrl('/public/darkLogo.png');
+  const iconLight = useBaseUrl('/public/icon-light.png');
+  const iconDark = useBaseUrl('/public/icon-dark.png');
 
   return (
     <header className={styles.hero}>
       <div className={styles.heroBrand}>
-        <img className={styles.heroLogo} src={logo} alt="" width={56} height={56} />
+        <img className={styles.heroLogo} src={iconLight} alt="" width={44} height={36} />
+        <img className={`${styles.heroLogo} ${styles.heroLogoDark}`} src={iconDark} alt="" width={44} height={36} />
         <div className={styles.heroCopy}>
           <p className={styles.heroEyebrow}>Guides & notes</p>
           <h1 className={styles.heroTitle}>{title}</h1>

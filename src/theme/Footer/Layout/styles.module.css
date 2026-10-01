@@ -29,10 +29,10 @@
 
 .brandLogo {
   flex-shrink: 0;
-  height: var(--loadcurl-size-logo);
+  height: 2rem;
   line-height: 0;
-  overflow: hidden;
-  width: var(--loadcurl-size-logo);
+  overflow: visible;
+  width: auto;
 }
 
 .brandLogo :global(a) {
@@ -45,14 +45,13 @@
 
 .brandLogo :global(.footer__logo) {
   display: block;
-  height: 100%;
+  height: 2rem;
   margin: 0;
   max-height: none;
   max-width: none;
-  object-fit: cover;
-  object-position: center;
-  transform: scale(1.25);
-  width: 100%;
+  object-fit: contain;
+  object-position: left center;
+  width: auto;
 }
 
 .brandName {
