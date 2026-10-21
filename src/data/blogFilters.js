@@ -4,7 +4,7 @@ export const BLOG_TOTAL_POSTS = 26;
 export const BLOG_FILTERS = [
   {
     "label": "How-to guides",
-    "count": 9,
+    "count": 10,
     "permalink": "/blog/tags/how-to-guides"
   },
   {
@@ -19,7 +19,7 @@ export const BLOG_FILTERS = [
   },
   {
     "label": "Metrics & SLOs",
-    "count": 6,
+    "count": 5,
     "permalink": "/blog/tags/metrics-sl-os"
   },
   {
